@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Foodizz</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_near">Near</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_me">Me</string>
 </resources>
