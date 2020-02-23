@@ -24,6 +24,54 @@
             android:layout_gravity="top"
             android:src="@drawable/dm2" />
 
+        <CheckBox
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="152dp"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="top|right"
+            android:button="@drawable/favourite"
+            android:buttonTint="@color/theme"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pasta with ham"
+            android:layout_gravity="top|left"
+            android:layout_marginTop="154dp"
+            android:layout_marginLeft="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$96.00"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="172dp"
+            android:layout_marginRight="2dp"
+            android:textColor="@android:color/black"/>
+
+        <RatingBar
+            android:layout_width="45dp"
+            android:layout_height="42dp"
+            android:layout_gravity="bottom|left"
+            android:isIndicator="true"
+            android:numStars="2"
+            android:progressTint="@color/theme"
+            android:rating="4.6"
+            android:scaleX="0.25"
+            android:scaleY="0.25"
+            android:stepSize="0.5"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.6"
+            android:textSize="12sp"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="2dp"/>
+
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -46,6 +94,53 @@
             android:layout_gravity="top"
             android:src="@drawable/dm1" />
 
+        <CheckBox
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="152dp"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="top|right"
+            android:button="@drawable/favourite"
+            android:buttonTint="@color/theme"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grilled salmon"
+            android:layout_gravity="top|left"
+            android:layout_marginTop="154dp"
+            android:layout_marginLeft="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$96.00"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="172dp"
+            android:layout_marginRight="2dp"
+            android:textColor="@android:color/black"/>
+
+        <RatingBar
+            android:layout_width="45dp"
+            android:layout_height="42dp"
+            android:layout_gravity="bottom|left"
+            android:isIndicator="true"
+            android:numStars="2"
+            android:progressTint="@color/theme"
+            android:rating="4.6"
+            android:scaleX="0.25"
+            android:scaleY="0.25"
+            android:stepSize="0.5"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.6"
+            android:textSize="12sp"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="2dp"/>
 
     </com.google.android.material.card.MaterialCardView>
 
