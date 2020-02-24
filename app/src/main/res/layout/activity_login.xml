@@ -29,9 +29,9 @@
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="8dp"
             android:text="Sign up"
-            android:textColor="#F44336"
+            android:textColor="@color/themeColor"
             app:cornerRadius="5dp"
-            app:rippleColor="#FFCDD2" />
+            app:rippleColor="@color/rippleColor" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
@@ -39,11 +39,11 @@
             android:layout_height="64dp"
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="72dp"
-            android:backgroundTint="#F44336"
+            android:backgroundTint="@color/themeColor"
             android:text="Sign in"
             android:textColor="@android:color/white"
             app:cornerRadius="5dp"
-            app:rippleColor="#FFCDD2" />
+            app:rippleColor="@color/rippleColor" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -54,8 +54,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="240dp"
             android:hint="Email"
-            app:boxStrokeColor="#F44336"
-            app:hintTextColor="#F44336">
+            app:boxStrokeColor="@color/themeColor"
+            app:hintTextColor="@color/themeColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtEmailLogin"
@@ -75,8 +75,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="176dp"
             android:hint="Password"
-            app:boxStrokeColor="#F44336"
-            app:hintTextColor="#F44336">
+            app:boxStrokeColor="@color/themeColor"
+            app:hintTextColor="@color/themeColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPasswordLogin"
@@ -94,9 +94,9 @@
             android:layout_gravity="bottom|left"
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="136dp"
-            android:buttonTint="#F44336"
+            android:buttonTint="@color/themeColor"
             android:text="Remember me"
-            android:textColor="#F44336" />
+            android:textColor="@color/themeColor" />
 
     </com.google.android.material.card.MaterialCardView>
 

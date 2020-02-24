@@ -64,13 +64,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="Find a food or restaurant"
-        app:boxStrokeColor="@color/theme"
-        app:hintTextColor="@color/theme"
+        app:boxStrokeColor="@color/themeColor"
+        app:hintTextColor="@color/themeColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_home"
         app:startIconDrawable="@drawable/search"
-        app:startIconTint="@color/theme">
+        app:startIconTint="@color/themeColor">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtHomeSearch"

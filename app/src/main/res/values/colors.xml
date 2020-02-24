@@ -3,8 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="theme">#F44336</color>
-    <color name="textColor">#212121</color>
+    
+    <color name="themeColor">#F44336</color>
     <color name="rippleColor">#FFCDD2</color>
-    <color name="backgroundColor">#F5F5F5</color>
+    <color name="notFocusColor">#212121</color>
+    <color name="categoryBackground">#F5F5F5</color>
 </resources>

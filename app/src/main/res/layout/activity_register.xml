@@ -36,7 +36,7 @@
             android:layout_gravity="top|center"
             android:layout_marginTop="16dp"
             android:src="@drawable/camera"
-            app:civ_border_color="#F44336"
+            app:civ_border_color="@color/themeColor"
             app:civ_border_width="2dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -48,8 +48,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="224dp"
             android:hint="Email"
-            app:boxStrokeColor="#F44336"
-            app:hintTextColor="#F44336">
+            app:boxStrokeColor="@color/themeColor"
+            app:hintTextColor="@color/themeColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtEmailRegister"
@@ -69,8 +69,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="160dp"
             android:hint="Password"
-            app:boxStrokeColor="#F44336"
-            app:hintTextColor="#F44336">
+            app:boxStrokeColor="@color/themeColor"
+            app:hintTextColor="@color/themeColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPasswordRegister"
@@ -90,8 +90,8 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="96dp"
             android:hint="Phone Number"
-            app:boxStrokeColor="#F44336"
-            app:hintTextColor="#F44336">
+            app:boxStrokeColor="@color/themeColor"
+            app:hintTextColor="@color/themeColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPhoneNumber"
@@ -108,11 +108,11 @@
             android:layout_height="64dp"
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#F44336"
+            android:backgroundTint="@color/themeColor"
             android:text="Sign up"
             android:textColor="@android:color/white"
             app:cornerRadius="5dp"
-            app:rippleColor="#FFCDD2" />
+            app:rippleColor="@color/rippleColor" />
 
 
     </com.google.android.material.card.MaterialCardView>

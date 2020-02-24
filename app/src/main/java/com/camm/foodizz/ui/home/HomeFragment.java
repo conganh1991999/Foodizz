@@ -1,17 +1,21 @@
 package com.camm.foodizz.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.camm.foodizz.FoodDetailActivity;
 import com.camm.foodizz.R;
 import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.GroupieViewHolder;
@@ -28,7 +32,9 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
         Mapping();
+
         manageRecycleView();
+
         setCategoryData();
         setFoodData();
         setRestaurantData();
@@ -60,7 +66,7 @@ public class HomeFragment extends Fragment {
 
     private void setCategoryData(){
         GroupAdapter adapter = new GroupAdapter<GroupieViewHolder>();
-        adapter.add(new CategoryItem("Fastfood", R.drawable.fastfood));
+        adapter.add(new CategoryItem("Fastfood", R.drawable.fast_food));
         adapter.add(new CategoryItem("Sushi", R.drawable.sushi));
         adapter.add(new CategoryItem("Pizza", R.drawable.pizza));
         adapter.add(new CategoryItem("Noodle", R.drawable.noodle));
@@ -122,8 +128,26 @@ public class HomeFragment extends Fragment {
         public void bind(@NonNull GroupieViewHolder viewHolder, int position) {
             ImageView imgHomeFood1 = viewHolder.itemView.findViewById(R.id.imgHomeFood1);
             ImageView imgHomeFood2 = viewHolder.itemView.findViewById(R.id.imgHomeFood2);
-            imgHomeFood1.setImageResource(R.drawable.dm2);
-            imgHomeFood2.setImageResource(R.drawable.dm1);
+            CardView cardFood1 = viewHolder.itemView.findViewById(R.id.cardFood1);
+            CardView cardFood2 = viewHolder.itemView.findViewById(R.id.cardFood2);
+
+            cardFood1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), FoodDetailActivity.class);
+                    startActivity(intent);
+                }
+            });
+            cardFood2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), FoodDetailActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            imgHomeFood1.setImageResource(R.drawable.dm4);
+            imgHomeFood2.setImageResource(R.drawable.dm3);
         }
 
         @Override

@@ -42,7 +42,7 @@
             android:scaleX="0.25"
             android:scaleY="0.25"
             android:stepSize="0.5"
-            android:progressTint="@color/theme"/>
+            android:progressTint="@color/themeColor"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
             android:text="Pizza"
             android:layout_marginLeft="88dp"
             android:layout_marginTop="56dp"
-            android:background="#F5F5F5"
+            android:background="@color/categoryBackground"
             android:padding="2dp"
             android:gravity="center"/>
 
@@ -76,7 +76,7 @@
             android:text="Fruits"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="56dp"
-            android:background="#F5F5F5"
+            android:background="@color/categoryBackground"
             android:padding="2dp"
             android:gravity="center"/>
 
@@ -86,13 +86,13 @@
             android:text="Grilled"
             android:layout_marginLeft="232dp"
             android:layout_marginTop="56dp"
-            android:background="#F5F5F5"
+            android:background="@color/categoryBackground"
             android:padding="2dp"
             android:gravity="center"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:src="@drawable/focus"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="88dp"/>
@@ -106,8 +106,8 @@
             android:layout_marginTop="88dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:src="@drawable/clock"
             android:layout_marginLeft="156dp"
             android:layout_marginTop="88dp"/>
