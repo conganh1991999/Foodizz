@@ -20,6 +20,7 @@
         android:layout_height="450dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="2dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +195,7 @@
 
         <fragment
             android:id="@+id/fragment_detail_review"
-            android:name="com.camm.foodizz.ui.DetailFragment"
+            android:name="com.camm.foodizz.ui.ReviewFragment"
             android:layout_width="match_parent"
             android:layout_height="264dp"
             android:layout_gravity="center|bottom" />
