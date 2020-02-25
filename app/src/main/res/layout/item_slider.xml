@@ -5,13 +5,11 @@
     android:layout_height="match_parent"
     android:id="@+id/linearLayoutDemo">
 
-    <TextView
-        android:id="@+id/textViewDemo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:text="Hello, World!"/>
+    <ImageView
+        android:id="@+id/sliderImage"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="top"
+        android:src="@drawable/slide_demo1" />
 
 </LinearLayout>

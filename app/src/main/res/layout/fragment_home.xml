@@ -64,6 +64,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="Find a food or restaurant"
+        android:focusableInTouchMode="true"
         app:boxStrokeColor="@color/themeColor"
         app:hintTextColor="@color/themeColor"
         app:layout_constraintEnd_toEndOf="parent"

@@ -19,36 +19,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="64dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.nex3z.notificationbadge.NotificationBadge
-            android:id="@+id/mBadge"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@+id/checkBox"
-            app:layout_constraintTop_toTopOf="@+id/checkBox"
-            app:nbBackground="@drawable/badge_number"
-            app:nbMaxTextLength="2" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/cart_notification"
-            android:buttonTint="@color/themeColor"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

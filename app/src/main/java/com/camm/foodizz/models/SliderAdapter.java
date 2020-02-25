@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,16 +18,16 @@ import java.util.ArrayList;
 public class SliderAdapter extends PagerAdapter {
 
     private Context context;
-    private ArrayList<String> colorName;
+    private ArrayList<Integer> foodImage;
 
-    public SliderAdapter(Context context, ArrayList<String> colorName) {
+    public SliderAdapter(Context context, ArrayList<Integer> foodImage) {
         this.context = context;
-        this.colorName = colorName;
+        this.foodImage = foodImage;
     }
 
     @Override
     public int getCount() {
-        return colorName.size();
+        return foodImage.size();
     }
 
     @Override
@@ -41,8 +42,8 @@ public class SliderAdapter extends PagerAdapter {
         assert inflater != null;
         View view = inflater.inflate(R.layout.item_slider, container, false);
 
-        TextView textView = view.findViewById(R.id.textViewDemo);
-        textView.setText(colorName.get(position));
+        ImageView imageView = view.findViewById(R.id.sliderImage);
+        imageView.setImageResource(foodImage.get(position));
 
         container.addView(view);
 
