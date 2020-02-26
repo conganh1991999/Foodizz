@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/people2"
+        android:id="@+id/rawImageReviewRestaurant"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="top|center"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/rawNameReviewRestaurant"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -27,20 +27,18 @@
         android:text="John Hopkins"
         android:textColor="@color/notFocusColor"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/people2"
+        app:layout_constraintStart_toEndOf="@+id/rawImageReviewRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:text="April 4, 2019"
-        app:layout_constraintStart_toEndOf="@+id/people2"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toEndOf="@+id/rawImageReviewRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/rawNameReviewRestaurant" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="160dp"
@@ -55,7 +53,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="224dp"
@@ -69,10 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="48dp"
-        android:maxWidth="250dp"
-        android:text="The food is amazing, everyone else already
-said everything about the food so there isn't much to add."
-        app:layout_constraintStart_toEndOf="@+id/people2"
+        android:maxWidth="272dp"
+        android:text="The food at Grilled salmon is amazing, everyone else already
+said everything about the food so there isn't much to add. It really is what everyone say."
+        app:layout_constraintStart_toEndOf="@+id/rawImageReviewRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

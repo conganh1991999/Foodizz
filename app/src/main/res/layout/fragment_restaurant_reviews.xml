@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/people"
+        android:id="@+id/imgReviewRestaurant"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="top|center"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtMyNameOnRestaurantReview"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -28,7 +28,7 @@
         android:text="Linda Cherry"
         android:textColor="@color/notFocusColor"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/people"
+        app:layout_constraintStart_toEndOf="@+id/imgReviewRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
@@ -55,20 +55,20 @@
         android:layout_marginLeft="224dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/edtReviewRestaurant"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_gravity="bottom|center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="8dp"
-        android:hint="Review"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="64dp"
         android:focusableInTouchMode="true"
+        android:hint="Review"
         app:boxStrokeColor="@color/themeColor"
         app:hintTextColor="@color/themeColor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/people"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -80,26 +80,28 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton2"
-        android:layout_width="72dp"
+        android:id="@+id/btnReviewRestaurant"
+        android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="center|top"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
         android:backgroundTint="@color/themeColor"
-        android:text="Post"
+        android:text="P"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         app:cornerRadius="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintStart_toEndOf="@+id/edtReviewRestaurant"
+        app:layout_constraintTop_toTopOf="parent"
         app:rippleColor="@color/rippleColor" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_food_review"
+        android:id="@+id/recyclerViewRestaurantReview"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/edtReviewRestaurant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

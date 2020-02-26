@@ -95,6 +95,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/txtRestaurantHasFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -108,7 +109,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_gravity="right|top"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="92dp"
             android:layout_marginRight="36dp"
             android:gravity="center"
             android:text="+"
@@ -123,7 +124,7 @@
             android:layout_height="56dp"
             android:layout_gravity="left|top"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="92dp"
             android:gravity="center"
             android:text="-"
             android:textColor="@color/themeColor"
@@ -135,7 +136,7 @@
             android:layout_width="128dp"
             android:layout_height="56dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="92dp"
             android:backgroundTint="@color/themeColor"
             android:text="Add to Bag"
             android:textAllCaps="false"
@@ -195,7 +196,7 @@
 
         <fragment
             android:id="@+id/fragment_detail_review"
-            android:name="com.camm.foodizz.ui.ReviewFragment"
+            android:name="com.camm.foodizz.ui.FoodReviewFragment"
             android:layout_width="match_parent"
             android:layout_height="264dp"
             android:layout_gravity="center|bottom" />

@@ -3,8 +3,12 @@ package com.camm.foodizz;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.TextView;
+
 import com.camm.foodizz.models.SliderAdapter;
 import com.nex3z.notificationbadge.NotificationBadge;
 
@@ -18,6 +22,8 @@ public class FoodDetailActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private CircleIndicator indicator;
+
+    private TextView txtRestaurantHasFood;
 
     private ArrayList<Integer> foodImage;
 
@@ -43,6 +49,15 @@ public class FoodDetailActivity extends AppCompatActivity {
         mBadge.setNumber(1);
 
         createSliderShow();
+
+        txtRestaurantHasFood = findViewById(R.id.txtRestaurantHasFood);
+        txtRestaurantHasFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoodDetailActivity.this, RestaurantActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void createSliderShow(){
