@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
 
-public class Divider extends RecyclerView.ItemDecoration {
+public class ReviewDivider extends RecyclerView.ItemDecoration {
 
     private Drawable mDivider;
     private int mOrientation;
 
-    public Divider(Context context, int orientation){
+    public ReviewDivider(Context context, int orientation){
         mDivider = ContextCompat.getDrawable(context, R.drawable.recycler_view_devider);
         mOrientation = orientation;
     }

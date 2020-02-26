@@ -13,41 +13,37 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.models.ReviewDivider;
+import com.camm.foodizz.models.ItemDivider;
 import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.GroupieViewHolder;
 import com.xwray.groupie.Item;
 
-public class RestaurantReviewFragment extends Fragment {
-
-    private RecyclerView recyclerViewRestaurantReview;
-
+public class FavouriteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_restaurant_reviews, container, false);
+        View view =  inflater.inflate(R.layout.fragment_favourite, container, false);
 
-        recyclerViewRestaurantReview = view.findViewById(R.id.recyclerViewRestaurantReview);
-        recyclerViewRestaurantReview.setHasFixedSize(true);
-        LinearLayoutManager managerReview = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerViewRestaurantReview.setLayoutManager(managerReview);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewFavourite);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager managerFavourite = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(managerFavourite);
 
         GroupAdapter adapter = new GroupAdapter<GroupieViewHolder>();
-        adapter.add(new ReviewItem());
-        adapter.add(new ReviewItem());
-        adapter.add(new ReviewItem());
+        adapter.add(new FoodItem());
+        adapter.add(new FoodItem());
 
         Context context = getContext();
         if(context != null){
-            recyclerViewRestaurantReview.addItemDecoration(new ReviewDivider(context, LinearLayoutManager.VERTICAL));
+            recyclerView.addItemDecoration(new ItemDivider(context, LinearLayoutManager.VERTICAL));
         }
 
-        recyclerViewRestaurantReview.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
 
-    class ReviewItem extends Item<GroupieViewHolder> {
+    class FoodItem extends Item<GroupieViewHolder> {
 
         @Override
         public void bind(@NonNull GroupieViewHolder viewHolder, int position) {
@@ -56,7 +52,7 @@ public class RestaurantReviewFragment extends Fragment {
 
         @Override
         public int getLayout() {
-            return R.layout.raw_restaurant_review;
+            return R.layout.raw_restaurant_menu;
         }
     }
 }

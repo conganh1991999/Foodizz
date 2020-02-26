@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.models.Divider;
+import com.camm.foodizz.models.ReviewDivider;
 import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.GroupieViewHolder;
 import com.xwray.groupie.Item;
@@ -39,7 +39,7 @@ public class FoodReviewFragment extends Fragment {
 
         Context context = getContext();
         if(context != null){
-            recyclerReview.addItemDecoration(new Divider(context, LinearLayoutManager.VERTICAL));
+            recyclerReview.addItemDecoration(new ReviewDivider(context, LinearLayoutManager.VERTICAL));
         }
 
         recyclerReview.setAdapter(adapter);
