@@ -1,148 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/txtHomeQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/news_cycle"
         android:text="What would you like to eat?"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/frameLayout"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:layout_marginEnd="8dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <com.google.android.material.button.MaterialButton-->
-<!--            android:id="@+id/btnNotification"-->
-<!--            style="@style/Widget.App.Button.OutlinedButton.IconOnly"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColorHint="@color/theme"-->
-<!--            app:cornerRadius="32dp"-->
-<!--            app:icon="@drawable/bell"-->
-<!--            app:iconTint="@color/theme"-->
-<!--            app:rippleColor="@color/rippleColor"-->
-<!--            app:strokeWidth="0dp" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtNotification"-->
-<!--            android:layout_width="16dp"-->
-<!--            android:layout_height="16dp"-->
-<!--            android:layout_gravity="top|right"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:background="@drawable/custom_bell_textview"-->
-<!--            android:fontFamily="@font/roboto"-->
-<!--            android:gravity="center"-->
-<!--            android:text="18"-->
-<!--            android:textColor="@android:color/white"-->
-<!--            android:textSize="12sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    </FrameLayout>-->
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/loHomeSearch"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Find a food or restaurant"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:focusable="false"
         android:focusableInTouchMode="true"
+        android:hint="Find a food or restaurant"
         app:boxStrokeColor="@color/themeColor"
         app:hintTextColor="@color/themeColor"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHomeSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home"
-        app:startIconDrawable="@drawable/search"
-        app:startIconTint="@color/themeColor">
+        app:layout_constraintTop_toBottomOf="@+id/txtHomeQuestion">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtHomeSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/news_cycle"
             android:inputType="text"
-            android:textCursorDrawable="@null" />
+            android:textCursorDrawable="@null"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHomeSearch"
+        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        app:icon="@drawable/search"
+        app:iconTint="@android:color/black"
+        android:gravity="start"
+        app:rippleColor="#FFCCBC"
+        app:strokeWidth="0dp"
+        android:backgroundTint="@color/rippleColor"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="16dp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHomeCategory"
+        android:id="@+id/recyclerHomeCategory"
         android:layout_width="0dp"
-        android:layout_height="82dp"
+        android:layout_height="52dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/loHomeSearch" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtBestFood"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/news_cycle"
         android:text="Best Food"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHomeCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHomeCategory" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtBestRestaurant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/news_cycle"
         android:text="Best Restaurant"
-        android:textSize="20dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHomeFood" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHomeFood" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHomeFood"
+        android:id="@+id/recyclerHomeFood"
         android:layout_width="0dp"
-        android:layout_height="202dp"
+        android:layout_height="206dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewHomeCategory"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewHomeCategory"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/recyclerHomeCategory"
+        app:layout_constraintStart_toStartOf="@+id/recyclerHomeCategory"
+        app:layout_constraintTop_toBottomOf="@+id/txtBestFood" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHomeRestaurant"
+        android:id="@+id/recyclerHomeRestaurant"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="56dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintEnd_toEndOf="@+id/recyclerHomeFood"
+        app:layout_constraintStart_toStartOf="@+id/recyclerHomeFood"
+        app:layout_constraintTop_toBottomOf="@+id/txtBestRestaurant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,12 +6,14 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/txtDetailOfFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="If you are hungry for success, food content marketing could be
 the answer. Food puns are as irresistible as mom's apple pie. There's no denying that good
 food-related content has the potential draw in the crowds. If you are hungry for success,
 food content marketing could be the answer."
+        android:fontFamily="@font/news_cycle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -5,7 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     
     <color name="themeColor">#F44336</color>
-    <color name="rippleColor">#FFCDD2</color>
+    <color name="rippleColor">#FFFFFF</color>
     <color name="notFocusColor">#212121</color>
     <color name="categoryBackground">#F5F5F5</color>
+    <color name="edtStroke">#720D5D</color>
 </resources>

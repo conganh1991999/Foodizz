@@ -4,160 +4,176 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RestaurantActivity">
+    tools:context=".restaurant.RestaurantActivity">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView3"
+    <ImageView
+        android:id="@+id/imgRestaurant"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        app:cardCornerRadius="0dp"
+        android:layout_height="216dp"
+        android:src="@drawable/restaurant_demo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:src="@drawable/restaurant_demo" />
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView4"
+        android:id="@+id/cardRestaurant"
         android:layout_width="0dp"
-        android:layout_height="116dp"
+        android:layout_height="120dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="192dp"
         android:layout_marginEnd="24dp"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imgRestaurantLogo"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="10dp"
             android:src="@drawable/domino" />
 
         <TextView
+            android:id="@+id/txtRestaurantName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="88dp"
             android:text="Pizza Hut"
-            android:textSize="20sp" />
+            android:textStyle="bold"
+            android:layout_marginStart="88dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/news_cycle"/>
 
         <RatingBar
+            android:id="@+id/rbRestaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
             android:isIndicator="true"
             android:numStars="5"
-            android:progressTint="@color/themeColor"
             android:rating="4.6"
             android:scaleX="0.25"
             android:scaleY="0.25"
-            android:stepSize="0.5" />
+            android:stepSize="0.5"
+            android:progressTint="@color/themeColor"/>
 
         <TextView
+            android:id="@+id/txtRestaurantRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="88dp"
-            android:layout_marginTop="31dp"
             android:text="4.6"
+            android:fontFamily="@font/news_cycle"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="27dp"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/txtRestaurantRateNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="176dp"
-            android:layout_marginTop="30dp"
             android:text="(240K)"
+            android:fontFamily="@font/news_cycle"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="26dp"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/txtRestaurantCategory1"
             android:layout_width="64dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="88dp"
+            android:text="Pizza"
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="56dp"
             android:background="@color/categoryBackground"
-            android:gravity="center"
             android:padding="2dp"
-            android:text="Pizza" />
+            android:gravity="center"/>
 
         <TextView
+            android:id="@+id/txtRestaurantCategory2"
             android:layout_width="64dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
+            android:text="Fruits"
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:layout_marginStart="160dp"
             android:layout_marginTop="56dp"
             android:background="@color/categoryBackground"
-            android:gravity="center"
             android:padding="2dp"
-            android:text="Fruits" />
+            android:gravity="center"/>
 
         <TextView
+            android:id="@+id/txtRestaurantCategory3"
             android:layout_width="64dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="232dp"
+            android:text="Grilled"
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:layout_marginStart="232dp"
             android:layout_marginTop="56dp"
             android:background="@color/categoryBackground"
-            android:gravity="center"
             android:padding="2dp"
-            android:text="Grilled" />
+            android:gravity="center"/>
 
         <ImageView
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="88dp"
-            android:src="@drawable/focus" />
+            android:src="@drawable/focus"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="95dp"/>
 
         <TextView
+            android:id="@+id/txtRestaurantHowFar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="88dp"
             android:text="3.2 KM Away"
-            android:textSize="12sp" />
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="90dp" />
 
         <ImageView
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:layout_marginLeft="156dp"
-            android:layout_marginTop="88dp"
-            android:src="@drawable/clock" />
+            android:src="@drawable/clock"
+            android:layout_marginStart="156dp"
+            android:layout_marginTop="95dp"/>
 
         <TextView
+            android:id="@+id/txtRestaurantHowLong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="176dp"
-            android:layout_marginTop="88dp"
             android:text="20 Minute Delivery"
-            android:textSize="12sp" />
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="90dp" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tabRestaurant"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView4"
+        app:layout_constraintTop_toBottomOf="@+id/cardRestaurant"
         app:tabIndicatorColor="@color/themeColor"
         app:tabIndicatorFullWidth="false"
         app:tabRippleColor="@color/rippleColor"
         app:tabTextColor="@color/themeColor">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabRestaurantMenu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Foods" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabRestaurantReview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Review" />
@@ -166,12 +182,13 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.camm.foodizz.ui.RestaurantMenuFragment"
+        android:name="com.camm.foodizz.restaurant.RestaurantReviewFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tabRestaurant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

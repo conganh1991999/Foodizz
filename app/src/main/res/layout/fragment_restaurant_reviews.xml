@@ -7,11 +7,10 @@
     android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgReviewRestaurant"
+        android:id="@+id/myImageOnRestaurant"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="top|center"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/crush"
         app:civ_border_color="@color/themeColor"
@@ -20,18 +19,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtMyNameOnRestaurantReview"
+        android:id="@+id/myNameOnRestaurant"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:text="Linda Cherry"
-        android:textColor="@color/notFocusColor"
+        android:textStyle="bold"
+        android:fontFamily="@font/news_cycle"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/imgReviewRestaurant"
+        app:layout_constraintStart_toEndOf="@+id/myImageOnRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
+        android:id="@+id/myRbOnRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:isIndicator="true"
@@ -43,65 +44,73 @@
         android:stepSize="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="160dp"/>
+        android:layout_marginStart="160dp"/>
 
     <TextView
+        android:id="@+id/myRateOnRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
         android:text="4.6"
+        android:fontFamily="@font/news_cycle"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="224dp"/>
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="17dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtReviewRestaurant"
+        android:id="@+id/loRestaurantReview"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_gravity="bottom|center"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
-        android:layout_marginRight="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
         android:focusableInTouchMode="true"
+        android:focusable="false"
         android:hint="Review"
         app:boxStrokeColor="@color/themeColor"
         app:hintTextColor="@color/themeColor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnPostReviewRestaurant"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtReviewRestaurant"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textEmailAddress"
+            android:fontFamily="@font/news_cycle"
+            android:inputType="text"
             android:textCursorDrawable="@null" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnReviewRestaurant"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center|top"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
-        android:backgroundTint="@color/themeColor"
-        android:text="P"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        app:cornerRadius="4dp"
-        app:layout_constraintStart_toEndOf="@+id/edtReviewRestaurant"
-        app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/rippleColor" />
+        android:id="@+id/btnPostReviewRestaurant"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="16dp"
+        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        app:icon="@drawable/send"
+        app:iconTint="@color/themeColor"
+        android:gravity="start"
+        app:rippleColor="#FFCCBC"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/themeColor"
+        android:backgroundTint="@color/rippleColor"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewRestaurantReview"
+        android:id="@+id/recyclerReviewRestaurant"
         android:layout_width="0dp"
-        android:layout_height="204dp"
+        android:layout_height="200dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtReviewRestaurant" />
+        app:layout_constraintTop_toBottomOf="@+id/loRestaurantReview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

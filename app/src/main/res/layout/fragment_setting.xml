@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView10"
+        android:id="@+id/cardLocationTracking"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
@@ -16,28 +16,31 @@
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView13">
+        app:layout_constraintTop_toBottomOf="@+id/cardCompress">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:paddingLeft="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:text="Location tracking"
+            android:fontFamily="@font/news_cycle"
             android:textSize="18sp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swLocationTracking"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:checked="true"
-            android:paddingRight="16dp"
+            android:paddingEnd="16dp"
             app:thumbTint="@color/themeColor"
             app:trackTint="#EF9A9A" />
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView13"
+        android:id="@+id/cardCompress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -49,6 +52,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLocation"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:cardCornerRadius="0dp"
@@ -59,21 +63,24 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_gravity="center|left"
+                android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
                 app:srcCompat="@drawable/location" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="48dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="72dp"
                 android:text="Location"
-                android:textSize="18sp" />
+                android:gravity="start|center"
+                android:fontFamily="@font/news_cycle"
+                android:textSize="16sp" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardShipping"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:cardCornerRadius="0dp"
@@ -85,22 +92,25 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_gravity="center|left"
+                android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
                 android:padding="2dp"
                 app:srcCompat="@drawable/truck" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="48dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="72dp"
+                android:gravity="start|center"
                 android:text="Shipping"
-                android:textSize="18sp" />
+                android:fontFamily="@font/news_cycle"
+                android:textSize="16sp"/>
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPayment"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:cardCornerRadius="0dp"
@@ -112,24 +122,27 @@
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_gravity="center|left"
+                android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
                 android:padding="2dp"
                 app:srcCompat="@drawable/payment" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="48dp"
+                android:layout_gravity="center|start"
+                android:gravity="center|start"
                 android:text="Payment"
-                android:textSize="18sp" />
+                android:layout_marginStart="72dp"
+                android:fontFamily="@font/news_cycle"
+                android:textSize="16sp" />
 
         </com.google.android.material.card.MaterialCardView>
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLogout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
@@ -138,7 +151,7 @@
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView10"
+        app:layout_constraintTop_toBottomOf="@+id/cardLocationTracking"
         android:clickable="true"
         android:focusable="true"
         app:rippleColor="@color/rippleColor">
@@ -146,18 +159,20 @@
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_gravity="center|left"
+            android:layout_gravity="center|start"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/log_out" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="48dp"
+            android:layout_gravity="center|start"
+            android:gravity="center|start"
+            android:layout_marginStart="72dp"
             android:text="Log out"
+            android:fontFamily="@font/news_cycle"
             android:textSize="18sp" />
 
     </com.google.android.material.card.MaterialCardView>

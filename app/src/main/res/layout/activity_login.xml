@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sign_in"
-    tools:context=".LoginActivity">
+    tools:context=".begin.LoginActivity">
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.MaterialComponents.CardView"

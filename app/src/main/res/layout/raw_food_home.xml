@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardFood1"
+        android:id="@+id/cardHomeFood1"
         android:layout_width="152dp"
-        android:layout_height="198dp"
-        android:layout_gravity="top|left"
-        android:layout_marginRight="10dp"
+        android:layout_height="202dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="4dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginStart="2dp"
         app:cardCornerRadius="10dp"
         android:clickable="true"
         android:focusable="true"
@@ -22,39 +21,44 @@
             android:id="@+id/imgHomeFood1"
             android:layout_width="match_parent"
             android:layout_height="152dp"
-            android:layout_gravity="top"
-            android:src="@drawable/dm4" />
+            android:src="@drawable/food_demo2" />
 
         <CheckBox
+            android:id="@+id/cbHomeFood1"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="152dp"
-            android:layout_marginRight="4dp"
-            android:layout_gravity="top|right"
+            android:layout_marginEnd="4dp"
+            android:layout_gravity="end"
             android:button="@drawable/favourite"
             android:buttonTint="@color/themeColor"/>
 
         <TextView
+            android:id="@+id/txtHomeFoodName1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pasta with ham"
-            android:layout_gravity="top|left"
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
             android:layout_marginTop="154dp"
-            android:layout_marginLeft="4dp" />
+            android:layout_marginStart="4dp" />
 
         <TextView
+            android:id="@+id/txtHomeFoodPrice1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$96.00"
-            android:layout_gravity="top|right"
-            android:layout_marginTop="172dp"
-            android:layout_marginRight="4dp"
-            android:textColor="@color/notFocusColor"/>
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_gravity="end"
+            android:layout_marginTop="176dp"
+            android:layout_marginEnd="4dp"/>
 
         <RatingBar
             android:layout_width="45dp"
             android:layout_height="42dp"
-            android:layout_gravity="bottom|left"
+            android:layout_gravity="bottom"
             android:isIndicator="true"
             android:numStars="2"
             android:progressTint="@color/themeColor"
@@ -62,27 +66,29 @@
             android:scaleX="0.25"
             android:scaleY="0.25"
             android:stepSize="0.5"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginStart="8dp" />
 
         <TextView
+            android:id="@+id/txtHomeFoodRate1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.6"
             android:textSize="12sp"
-            android:layout_gravity="bottom|left"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="4dp"/>
+            android:fontFamily="@font/news_cycle"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="4dp"/>
 
 
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardFood2"
+        android:id="@+id/cardHomeFood2"
         android:layout_width="152dp"
-        android:layout_height="198dp"
-        android:layout_gravity="top|right"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="2dp"
+        android:layout_height="202dp"
+        android:layout_gravity="end"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="4dp"
         app:cardCornerRadius="10dp"
         android:clickable="true"
@@ -93,39 +99,44 @@
             android:id="@+id/imgHomeFood2"
             android:layout_width="match_parent"
             android:layout_height="152dp"
-            android:layout_gravity="top"
-            android:src="@drawable/dm3" />
+            android:src="@drawable/food_demo1" />
 
         <CheckBox
+            android:id="@+id/cbHomeFood2"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="152dp"
-            android:layout_marginRight="4dp"
-            android:layout_gravity="top|right"
+            android:layout_marginEnd="4dp"
+            android:layout_gravity="end"
             android:button="@drawable/favourite"
             android:buttonTint="@color/themeColor"/>
 
         <TextView
+            android:id="@+id/txtHomeFoodName2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Grilled salmon"
-            android:layout_gravity="top|left"
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
             android:layout_marginTop="154dp"
-            android:layout_marginLeft="4dp" />
+            android:layout_marginStart="4dp" />
 
         <TextView
+            android:id="@+id/txtHomeFoodPrice2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$96.00"
-            android:layout_gravity="top|right"
-            android:layout_marginTop="172dp"
-            android:layout_marginRight="4dp"
-            android:textColor="@color/notFocusColor"/>
+            android:fontFamily="@font/news_cycle"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_gravity="end"
+            android:layout_marginTop="176dp"
+            android:layout_marginEnd="4dp"/>
 
         <RatingBar
             android:layout_width="45dp"
             android:layout_height="42dp"
-            android:layout_gravity="bottom|left"
+            android:layout_gravity="bottom"
             android:isIndicator="true"
             android:numStars="2"
             android:progressTint="@color/themeColor"
@@ -133,16 +144,18 @@
             android:scaleX="0.25"
             android:scaleY="0.25"
             android:stepSize="0.5"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginStart="8dp"/>
 
         <TextView
+            android:id="@+id/txtHomeFoodRate2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.6"
             android:textSize="12sp"
-            android:layout_gravity="bottom|left"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="4dp"/>
+            android:fontFamily="@font/news_cycle"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="4dp"/>
 
     </com.google.android.material.card.MaterialCardView>
 

@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RestaurantActivity"></activity>
-        <activity android:name=".FoodDetailActivity" />
+        <activity android:name=".restaurant.RestaurantActivity"></activity>
+        <activity android:name=".food_detail.FoodDetailActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".home.HomeActivity"
             android:label="@string/title_activity_home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".begin.RegisterActivity" />
+        <activity android:name=".begin.LoginActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
