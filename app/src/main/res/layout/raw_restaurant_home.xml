@@ -111,7 +111,7 @@
             android:layout_height="16dp"
             android:src="@drawable/focus"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="95dp"/>
+            android:layout_marginTop="92dp"/>
 
         <TextView
             android:id="@+id/txtHomeRestaurantHowFar"
@@ -128,7 +128,7 @@
             android:layout_height="16dp"
             android:src="@drawable/clock"
             android:layout_marginStart="156dp"
-            android:layout_marginTop="95dp"/>
+            android:layout_marginTop="92dp"/>
 
         <TextView
             android:id="@+id/txtHomeRestaurantHowLong"

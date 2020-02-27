@@ -151,10 +151,10 @@
 
     <fragment
         android:id="@+id/fragment2"
-        android:name="com.camm.foodizz.home.me.SettingFragment"
+        android:name="com.camm.foodizz.home.me.FavouriteFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

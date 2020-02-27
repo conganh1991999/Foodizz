@@ -15,6 +15,8 @@ public class FoodDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        NotificationBadge mBadge = findViewById(R.id.foodBadge);
+//        mBadge.setNumber(1);
         return inflater.inflate(R.layout.fragment_food_details, container, false);
     }
 }

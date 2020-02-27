@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.camm.foodizz.R;
 import com.camm.foodizz.restaurant.RestaurantActivity;
-import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -45,9 +44,6 @@ public class FoodDetailActivity extends AppCompatActivity {
 
         viewPager.setAdapter(new SliderAdapter(this, foodImage));
         indicator.setViewPager(viewPager);
-
-        NotificationBadge mBadge = findViewById(R.id.foodBadge);
-        mBadge.setNumber(1);
 
         createSliderShow();
 
