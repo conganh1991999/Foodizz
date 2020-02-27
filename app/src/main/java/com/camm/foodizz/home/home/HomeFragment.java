@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
         adapter.add(new RestaurantItem());
         adapter.add(new RestaurantItem());
 
-        recyclerRestaurant.addItemDecoration(new FoodListDivider(getContext(), LinearLayoutManager.VERTICAL));
+        recyclerRestaurant.addItemDecoration(new FoodListDivider(LinearLayoutManager.VERTICAL, 0, 0, 0, 20));
 
         recyclerRestaurant.setAdapter(adapter);
     }

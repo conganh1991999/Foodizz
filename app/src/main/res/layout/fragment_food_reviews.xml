@@ -44,19 +44,7 @@
         android:stepSize="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="136dp"/>
-
-    <TextView
-        android:id="@+id/myRateOnFoodDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4.6"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="202dp"
-        android:layout_marginTop="17dp"/>
+        android:layout_marginStart="126dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/loReviewFoodDetail"
@@ -107,7 +95,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerReviewFoodDetail"
         android:layout_width="0dp"
-        android:layout_height="212dp"
+        android:layout_height="216dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

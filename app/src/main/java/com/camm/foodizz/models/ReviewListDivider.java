@@ -32,7 +32,7 @@ public class ReviewListDivider extends RecyclerView.ItemDecoration {
 
     private void drawHorizontalDivider(Canvas c, RecyclerView parent, RecyclerView.State state) {
         int left, top, right, bottom;
-        left = parent.getPaddingLeft() + 40;
+        left = parent.getPaddingLeft() + 130;
         right = parent.getWidth() - parent.getPaddingRight() - 40;
         int count = parent.getChildCount();
         for(int i = 0; i < count; i++){
@@ -48,7 +48,7 @@ public class ReviewListDivider extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         if(mOrientation == LinearLayoutManager.VERTICAL){
-            outRect.set(0, 0, 0, 10);
+            outRect.set(0, 0, 0, 20);
         }
     }
 }

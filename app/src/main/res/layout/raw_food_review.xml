@@ -44,7 +44,7 @@
         android:id="@+id/rbSomeoneOnFoodDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="126dp"
         android:isIndicator="true"
         android:numStars="5"
         android:progressTint="@color/themeColor"
@@ -52,18 +52,6 @@
         android:scaleX="0.25"
         android:scaleY="0.25"
         android:stepSize="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtSomeoneRateOnFoodDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="202dp"
-        android:layout_marginTop="17dp"
-        android:text="4.6"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

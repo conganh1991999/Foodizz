@@ -10,7 +10,7 @@
         android:id="@+id/cardHomeRestaurant"
         android:layout_width="324dp"
         android:layout_height="120dp"
-        android:layout_margin="2dp"
+    android:layout_margin="2dp"
         app:cardCornerRadius="15dp"
         android:clickable="true"
         android:focusable="true"

@@ -1,6 +1,5 @@
 package com.camm.foodizz.models;
 
-import android.content.Context;
 import android.graphics.Rect;
 import android.view.View;
 
@@ -10,15 +9,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class FoodListDivider extends RecyclerView.ItemDecoration{
     private int mOrientation;
+    private int left, top, right, bottom;
 
-    public FoodListDivider(Context context, int orientation){
+    public FoodListDivider(int orientation, int left, int top, int right, int bottom){
         mOrientation = orientation;
+        this.left = left;
+        this.top = top;
+        this.right = right;
+        this.bottom = bottom;
     }
 
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         if(mOrientation == LinearLayoutManager.VERTICAL){
-            outRect.set(0, 10, 0, 10);
+            outRect.set(left, top, right, bottom);
         }
     }
 }
