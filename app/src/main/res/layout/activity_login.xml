@@ -31,7 +31,7 @@
             android:text="Sign up"
             android:textColor="@color/themeColor"
             app:cornerRadius="5dp"
-            app:rippleColor="@color/rippleColor" />
+            app:rippleColor="#FFCDD2" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
