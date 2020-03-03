@@ -33,7 +33,7 @@ public class RestaurantMenuFragment extends Fragment {
         adapter.add(new FoodItem());
         adapter.add(new FoodItem());
 
-        recyclerView.addItemDecoration(new FoodListDivider(LinearLayoutManager.VERTICAL, 0, 0, 0, 30));
+        recyclerView.addItemDecoration(new FoodListDivider(0, 0, 0, 30));
 
         recyclerView.setAdapter(adapter);
 
