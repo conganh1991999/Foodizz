@@ -1,4 +1,4 @@
-package com.camm.foodizz.models;
+package com.camm.foodizz.models.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
+import com.camm.foodizz.models.data.CategoryData;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

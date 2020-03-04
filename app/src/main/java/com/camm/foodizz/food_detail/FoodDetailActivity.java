@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.camm.foodizz.R;
+import com.camm.foodizz.models.adapter.SliderAdapter;
 import com.camm.foodizz.restaurant.RestaurantActivity;
 
 import java.util.ArrayList;

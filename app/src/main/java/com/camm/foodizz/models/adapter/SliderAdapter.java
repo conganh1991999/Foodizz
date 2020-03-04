@@ -1,4 +1,4 @@
-package com.camm.foodizz.food_detail;
+package com.camm.foodizz.models.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

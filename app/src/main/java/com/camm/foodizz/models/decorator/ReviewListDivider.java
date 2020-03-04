@@ -1,4 +1,4 @@
-package com.camm.foodizz.models;
+package com.camm.foodizz.models.decorator;
 
 import android.content.Context;
 import android.graphics.Canvas;

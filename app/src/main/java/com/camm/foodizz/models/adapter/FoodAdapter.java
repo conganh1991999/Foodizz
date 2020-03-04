@@ -1,4 +1,4 @@
-package com.camm.foodizz.models;
+package com.camm.foodizz.models.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
+import com.camm.foodizz.models.data.FoodData;
+import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 // Adapter for RecyclerView
@@ -24,7 +27,7 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<FoodData> listFoods;
     private Context context;
 
-    FoodAdapter(ArrayList<FoodData> listFoods, Context context) {
+    public FoodAdapter(ArrayList<FoodData> listFoods, Context context) {
         this.listFoods = listFoods;
         this.context = context;
     }
@@ -96,9 +99,10 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private void populateItemRows(ItemViewHolder holder, int position) {
         holder.txtHomeFoodName.setText(listFoods.get(position).getFoodName());
-        holder.txtHomeFoodPrice.setText(listFoods.get(position).getFoodPrice());
-        // Volley get image Picasso
-        holder.txtHomeFoodRate.setText(listFoods.get(position).getAverageScore());
+        holder.txtHomeFoodPrice.setText(String.format("$%s",
+                new DecimalFormat("######.00").format(listFoods.get(position).getFoodPrice())));
+        Picasso.get().load(listFoods.get(position).getFoodSquareImageUri()).into(holder.imgHomeFood);
+        holder.txtHomeFoodRate.setText(new DecimalFormat("0.0").format(listFoods.get(position).getAverageScore()));
         holder.cbHomeFood.setChecked(false);
     }
 }

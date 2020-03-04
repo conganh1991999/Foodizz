@@ -1,4 +1,4 @@
-package com.camm.foodizz.pushdata;
+package com.camm.foodizz.models.pushdata;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

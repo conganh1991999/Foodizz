@@ -1,4 +1,4 @@
-package com.camm.foodizz.models;
+package com.camm.foodizz.models.data;
 
 public class CategoryData {
     private String categoryName;
