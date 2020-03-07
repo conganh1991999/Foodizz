@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = edtEmailLogin.getText().toString();
-                final String password = edtPasswordLogin.getText().toString();
+                final String email = edtEmailLogin.getText().toString().trim();
+                final String password = edtPasswordLogin.getText().toString().trim();
 
                 if(email.equals("") || password.equals("")){
                     Toast.makeText(LoginActivity.this, "Fields can't be empty", Toast.LENGTH_SHORT).show();

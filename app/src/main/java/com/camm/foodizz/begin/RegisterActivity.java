@@ -51,7 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
     private String password;
     private String phone;
 
-    private int REQUEST_CODE_FOLDER = 101;
+    private static final int REQUEST_CODE_FOLDER = 101;
+    private static final int REQUEST_CODE_PHONE_VERIFICATION = 171;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,25 +81,12 @@ public class RegisterActivity extends AppCompatActivity {
                 password = edtPasswordRegister.getText().toString();
                 phone = edtPhoneNumber.getText().toString();
 
-                if(email.equals("") || password.equals("") || username.equals("") || phone.equals("")){
-                    Toast.makeText(RegisterActivity.this, "Fields can't be empty", Toast.LENGTH_SHORT).show();
-                    validateAccount(username);
-                }
-                else{
-                    progressRegister.setVisibility(View.VISIBLE);
-                    final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                    mAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        saveUserImage(mAuth.getCurrentUser());
-                                    } else {
-                                        if(task.getException() != null)
-                                            Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                if(validateAccount()){
+
+                    Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
+                    intent.putExtra("phone", phone);
+                    startActivityForResult(intent, REQUEST_CODE_PHONE_VERIFICATION);
+
                 }
             }
         });
@@ -114,17 +102,28 @@ public class RegisterActivity extends AppCompatActivity {
         progressRegister = findViewById(R.id.progressRegister);
     }
 
-    private void validateAccount(String username){
+    private boolean validateAccount(){
         String usernameRegex = "\\w*";
-        String alert1 = "Username can only contain letters, digits and underscores";
-        String alert2 = "Username too long";
+
+        if(email.equals("") || password.equals("") || username.equals("") || phone.equals("")){
+            Toast.makeText(RegisterActivity.this, "Fields can't be empty",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
         if(!Pattern.matches(usernameRegex, username)){
-            Toast.makeText(RegisterActivity.this, alert1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Username can only contain letters, digits and underscores",
+                    Toast.LENGTH_SHORT).show();
+            return false;
         }
-        else if(username.length() > 50){
-            Toast.makeText(RegisterActivity.this, alert2, Toast.LENGTH_SHORT).show();
+
+        if(username.length() > 30){
+            Toast.makeText(RegisterActivity.this, "Username too long",
+                    Toast.LENGTH_SHORT).show();
+            return false;
         }
+
+        return true;
     }
 
     private void saveUserImage(final FirebaseUser user){
@@ -179,6 +178,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void gotoLoginActivity(){
+        Toast.makeText(RegisterActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
         progressRegister.setVisibility(View.GONE);
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         intent.putExtra("email", email);
@@ -204,6 +204,24 @@ public class RegisterActivity extends AppCompatActivity {
             Uri uri = data.getData();
             assert uri != null;
             Picasso.get().load(uri).into(profileImage);
+        }
+        if(requestCode == REQUEST_CODE_PHONE_VERIFICATION && resultCode == RESULT_OK && data!=null){
+            if(data.getBooleanExtra("checker", false)){
+                progressRegister.setVisibility(View.VISIBLE);
+                final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    saveUserImage(mAuth.getCurrentUser());
+                                } else {
+                                    if(task.getException() != null)
+                                        Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

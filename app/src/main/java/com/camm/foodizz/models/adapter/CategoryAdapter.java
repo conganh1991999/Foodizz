@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
 import com.camm.foodizz.models.data.CategoryData;
+import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,8 +34,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static class ItemViewHolder extends RecyclerView.ViewHolder {
         ImageView imgCategory;
         TextView txtCategory;
+        MaterialCardView categoryCardView;
         ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+            categoryCardView = itemView.findViewById(R.id.categoryCardView);
             imgCategory = itemView.findViewById(R.id.imgRawCategory);
             txtCategory = itemView.findViewById(R.id.txtRawCategory);
         }
@@ -91,6 +94,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void populateItemRows(ItemViewHolder holder, int position) {
         holder.txtCategory.setText(listCategory.get(position).getCategoryName());
         Picasso.get().load(listCategory.get(position).getCategoryImageUri()).into(holder.imgCategory);
+
+        holder.categoryCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
 }
