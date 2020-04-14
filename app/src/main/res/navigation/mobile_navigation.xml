@@ -3,30 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.camm.foodizz.home.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_home"
+        android:name="com.camm.foodizz.ui.home_menu.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
+            app:destination="@id/nav_home_second" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_near"
-        android:name="com.camm.foodizz.home.near.NearFragment"
-        android:label="@string/title_near"
-        tools:layout="@layout/fragment_near" />
+        android:id="@+id/nav_home_second"
+        android:name="com.camm.foodizz.ui.home.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@id/nav_home" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_cart"
-        android:name="com.camm.foodizz.home.cart.CartFragment"
-        android:label="@string/title_cart"
+        android:id="@+id/nav_nearby"
+        android:name="com.camm.foodizz.ui.home_menu.nearby.NearbyFragment"
+        android:label="@string/menu_nearby"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.camm.foodizz.ui.home_menu.cart.CartFragment"
+        android:label="@string/menu_cart"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.camm.foodizz.ui.home_menu.profile.ProfileFragment"
+        android:label="@string/menu_profile"
         tools:layout="@layout/fragment_cart" />
-
-    <fragment
-        android:id="@+id/navigation_me"
-        android:name="com.camm.foodizz.home.me.MeFragment"
-        android:label="@string/title_me"
-        tools:layout="@layout/fragment_me" />
 
 </navigation>

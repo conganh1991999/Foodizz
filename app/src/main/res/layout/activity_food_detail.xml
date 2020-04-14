@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".food_detail.FoodDetailActivity">
+    tools:context=".ui.food_detail.FoodDetailActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerFoodDetail"
@@ -44,7 +44,7 @@
             android:layout_marginTop="28dp"
             android:layout_gravity="center|top"
             android:button="@drawable/favourite"
-            android:buttonTint="@color/themeColor" />
+            android:buttonTint="@color/colorAccent" />
 
         <TextView
             android:id="@+id/txtDetailFoodName"
@@ -93,10 +93,10 @@
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginTop="100dp"
-            app:tabIndicatorColor="@color/themeColor"
+            app:tabIndicatorColor="@color/colorAccent"
             app:tabIndicatorFullWidth="false"
-            app:tabRippleColor="@color/rippleColor"
-            app:tabTextColor="@color/themeColor">
+            app:tabRippleColor="@color/rippleColorPrimary"
+            app:tabTextColor="@color/colorAccent">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabDetailFood"
@@ -114,7 +114,7 @@
 
         <fragment
             android:id="@+id/fragment_detail_review"
-            android:name="com.camm.foodizz.food_detail.FoodReviewFragment"
+            android:name="com.camm.foodizz.ui.food_detail.FoodReviewFragment"
             android:layout_width="match_parent"
             android:layout_height="330dp"
             android:layout_gravity="center|bottom" />

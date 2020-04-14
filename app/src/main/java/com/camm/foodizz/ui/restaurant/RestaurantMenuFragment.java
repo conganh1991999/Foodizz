@@ -1,4 +1,4 @@
-package com.camm.foodizz.restaurant;
+package com.camm.foodizz.ui.restaurant;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

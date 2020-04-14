@@ -1,4 +1,4 @@
-package com.camm.foodizz.food_detail;
+package com.camm.foodizz.ui.restaurant;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,19 +18,19 @@ import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.GroupieViewHolder;
 import com.xwray.groupie.Item;
 
-public class FoodReviewFragment extends Fragment {
+public class RestaurantReviewFragment extends Fragment {
 
-    private RecyclerView recyclerReview;
+    private RecyclerView recyclerRestaurantReview;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_food_reviews, container, false);
+        View view = inflater.inflate(R.layout.fragment_restaurant_reviews, container, false);
 
-        recyclerReview = view.findViewById(R.id.recyclerReviewFoodDetail);
-        recyclerReview.setHasFixedSize(true);
+        recyclerRestaurantReview = view.findViewById(R.id.recyclerReviewRestaurant);
+        recyclerRestaurantReview.setHasFixedSize(true);
         LinearLayoutManager managerReview = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerReview.setLayoutManager(managerReview);
+        recyclerRestaurantReview.setLayoutManager(managerReview);
 
         GroupAdapter adapter = new GroupAdapter<GroupieViewHolder>();
         adapter.add(new ReviewItem());
@@ -39,10 +39,10 @@ public class FoodReviewFragment extends Fragment {
 
         Context context = getContext();
         if(context != null){
-            recyclerReview.addItemDecoration(new ReviewListDivider(context, LinearLayoutManager.VERTICAL));
+            recyclerRestaurantReview.addItemDecoration(new ReviewListDivider(context, LinearLayoutManager.VERTICAL));
         }
 
-        recyclerReview.setAdapter(adapter);
+        recyclerRestaurantReview.setAdapter(adapter);
 
         return view;
     }
@@ -56,8 +56,7 @@ public class FoodReviewFragment extends Fragment {
 
         @Override
         public int getLayout() {
-            return R.layout.raw_food_review;
+            return R.layout.raw_restaurant_review;
         }
     }
-
 }

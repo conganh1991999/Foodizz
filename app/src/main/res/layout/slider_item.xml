@@ -11,6 +11,6 @@
         android:id="@+id/sliderImage"
         android:layout_width="match_parent"
         android:layout_height="216dp"
-        android:src="@drawable/slider_demo1" />
+        android:src="@drawable/mock_food_land1" />
 
 </LinearLayout>

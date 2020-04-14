@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:rippleColor="@color/rippleColor"
+        app:rippleColor="@color/rippleColorPrimary"
         app:cardCornerRadius="4dp">
 
         <ImageView
@@ -25,7 +25,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:padding="5dp"
-            android:src="@drawable/fast_food" />
+            android:src="@drawable/mock_cate_fast_food" />
 
     </com.google.android.material.card.MaterialCardView>
 

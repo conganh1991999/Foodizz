@@ -1,4 +1,4 @@
-package com.camm.foodizz.begin;
+package com.camm.foodizz.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

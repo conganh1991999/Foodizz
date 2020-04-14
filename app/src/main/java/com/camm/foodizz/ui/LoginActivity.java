@@ -1,11 +1,10 @@
-package com.camm.foodizz.begin;
+package com.camm.foodizz.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.home.HomeActivity;
 import com.camm.foodizz.models.SQLiteHandler;
+import com.camm.foodizz.ui.home_menu.HomeMenuActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -65,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                                         if(cbRememberUser.isChecked()){
                                             database.updateLoginInfo(email, password);
                                         }
-                                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                        Intent intent = new Intent(LoginActivity.this, HomeMenuActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
                                     } else {

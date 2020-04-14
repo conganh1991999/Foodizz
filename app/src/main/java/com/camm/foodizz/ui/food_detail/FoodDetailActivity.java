@@ -1,4 +1,4 @@
-package com.camm.foodizz.food_detail;
+package com.camm.foodizz.ui.food_detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.camm.foodizz.R;
 import com.camm.foodizz.models.adapter.SliderAdapter;
-import com.camm.foodizz.restaurant.RestaurantActivity;
+import com.camm.foodizz.ui.restaurant.RestaurantActivity;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -39,9 +39,9 @@ public class FoodDetailActivity extends AppCompatActivity {
         indicator = findViewById(R.id.indicatorFoodDetail);
 
         foodImage = new ArrayList<>();
-        foodImage.add(R.drawable.slider_demo1);
-        foodImage.add(R.drawable.slider_demo2);
-        foodImage.add(R.drawable.slider_demo3);
+        foodImage.add(R.drawable.mock_food_land1);
+        foodImage.add(R.drawable.mock_food_land2);
+        foodImage.add(R.drawable.mock_food_land3);
 
         viewPager.setAdapter(new SliderAdapter(this, foodImage));
         indicator.setViewPager(viewPager);

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".restaurant.RestaurantActivity">
+    tools:context=".ui.restaurant.RestaurantActivity">
 
     <ImageView
         android:id="@+id/imgRestaurant"
         android:layout_width="match_parent"
         android:layout_height="216dp"
-        android:src="@drawable/restaurant_demo"
+        android:src="@drawable/mock_land_res"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="10dp"
-            android:src="@drawable/domino" />
+            android:src="@drawable/mock_logo_res" />
 
         <TextView
             android:id="@+id/txtRestaurantName"
@@ -56,7 +56,7 @@
             android:scaleX="0.25"
             android:scaleY="0.25"
             android:stepSize="0.5"
-            android:progressTint="@color/themeColor"/>
+            android:progressTint="@color/colorAccent"/>
 
         <TextView
             android:id="@+id/txtRestaurantRate"
@@ -120,7 +120,7 @@
         <ImageView
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/focus"
+            android:src="@drawable/ic_focus"
             android:layout_marginStart="40dp"
             android:layout_marginTop="92dp"/>
 
@@ -137,7 +137,7 @@
         <ImageView
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/clock"
+            android:src="@drawable/ic_clock"
             android:layout_marginStart="156dp"
             android:layout_marginTop="92dp"/>
 
@@ -161,10 +161,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardRestaurant"
-        app:tabIndicatorColor="@color/themeColor"
+        app:tabIndicatorColor="@color/colorAccent"
         app:tabIndicatorFullWidth="false"
-        app:tabRippleColor="@color/rippleColor"
-        app:tabTextColor="@color/themeColor">
+        app:tabRippleColor="@color/rippleColorPrimary"
+        app:tabTextColor="@color/colorAccent">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabRestaurantMenu"
@@ -182,7 +182,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.camm.foodizz.restaurant.RestaurantMenuFragment"
+        android:name="com.camm.foodizz.ui.restaurant.RestaurantMenuFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"

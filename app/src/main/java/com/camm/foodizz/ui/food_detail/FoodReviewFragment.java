@@ -1,4 +1,4 @@
-package com.camm.foodizz.restaurant;
+package com.camm.foodizz.ui.food_detail;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,19 +18,19 @@ import com.xwray.groupie.GroupAdapter;
 import com.xwray.groupie.GroupieViewHolder;
 import com.xwray.groupie.Item;
 
-public class RestaurantReviewFragment extends Fragment {
+public class FoodReviewFragment extends Fragment {
 
-    private RecyclerView recyclerRestaurantReview;
+    private RecyclerView recyclerReview;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_restaurant_reviews, container, false);
+        View view = inflater.inflate(R.layout.fragment_food_reviews, container, false);
 
-        recyclerRestaurantReview = view.findViewById(R.id.recyclerReviewRestaurant);
-        recyclerRestaurantReview.setHasFixedSize(true);
+        recyclerReview = view.findViewById(R.id.recyclerReviewFoodDetail);
+        recyclerReview.setHasFixedSize(true);
         LinearLayoutManager managerReview = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerRestaurantReview.setLayoutManager(managerReview);
+        recyclerReview.setLayoutManager(managerReview);
 
         GroupAdapter adapter = new GroupAdapter<GroupieViewHolder>();
         adapter.add(new ReviewItem());
@@ -39,10 +39,10 @@ public class RestaurantReviewFragment extends Fragment {
 
         Context context = getContext();
         if(context != null){
-            recyclerRestaurantReview.addItemDecoration(new ReviewListDivider(context, LinearLayoutManager.VERTICAL));
+            recyclerReview.addItemDecoration(new ReviewListDivider(context, LinearLayoutManager.VERTICAL));
         }
 
-        recyclerRestaurantReview.setAdapter(adapter);
+        recyclerReview.setAdapter(adapter);
 
         return view;
     }
@@ -56,7 +56,8 @@ public class RestaurantReviewFragment extends Fragment {
 
         @Override
         public int getLayout() {
-            return R.layout.raw_restaurant_review;
+            return R.layout.raw_food_review;
         }
     }
+
 }

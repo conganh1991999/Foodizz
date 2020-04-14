@@ -26,7 +26,7 @@
             android:paddingEnd="16dp"
             android:text="Location tracking"
             android:fontFamily="@font/news_cycle"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/swLocationTracking"
@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:checked="true"
             android:paddingEnd="16dp"
-            app:thumbTint="@color/themeColor"
+            app:thumbTint="@color/colorAccent"
             app:trackTint="#EF9A9A" />
 
     </com.google.android.material.card.MaterialCardView>
@@ -58,14 +58,14 @@
             app:cardCornerRadius="0dp"
             android:clickable="true"
             android:focusable="true"
-            app:rippleColor="@color/rippleColor">
+            app:rippleColor="@color/rippleColorPrimary">
 
             <ImageView
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
-                app:srcCompat="@drawable/location" />
+                app:srcCompat="@drawable/ic_location" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
             android:layout_marginTop="57dp"
             android:clickable="true"
             android:focusable="true"
-            app:rippleColor="@color/rippleColor">
+            app:rippleColor="@color/rippleColorPrimary">
 
             <ImageView
                 android:layout_width="32dp"
@@ -95,7 +95,7 @@
                 android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
                 android:padding="2dp"
-                app:srcCompat="@drawable/truck" />
+                app:srcCompat="@drawable/ic_truck" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             android:layout_marginTop="114dp"
             android:clickable="true"
             android:focusable="true"
-            app:rippleColor="@color/rippleColor">
+            app:rippleColor="@color/rippleColorPrimary">
 
             <ImageView
                 android:layout_width="32dp"
@@ -125,7 +125,7 @@
                 android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
                 android:padding="2dp"
-                app:srcCompat="@drawable/payment" />
+                app:srcCompat="@drawable/ic_payment" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardLocationTracking"
         android:clickable="true"
         android:focusable="true"
-        app:rippleColor="@color/rippleColor">
+        app:rippleColor="@color/rippleColorPrimary">
 
         <ImageView
             android:layout_width="32dp"
@@ -163,7 +163,7 @@
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/log_out" />
+            app:srcCompat="@drawable/ic_log_out" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -173,7 +173,7 @@
             android:layout_marginStart="72dp"
             android:text="Log out"
             android:fontFamily="@font/news_cycle"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
     </com.google.android.material.card.MaterialCardView>
 

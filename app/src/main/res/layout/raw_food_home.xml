@@ -13,13 +13,13 @@
         app:cardCornerRadius="10dp"
         android:clickable="true"
         android:focusable="true"
-        app:rippleColor="@color/rippleColor">
+        app:rippleColor="@color/rippleColorPrimary">
 
         <ImageView
             android:id="@+id/imgHomeFood"
             android:layout_width="match_parent"
             android:layout_height="152dp"
-            android:src="@drawable/food_demo2" />
+            android:src="@drawable/mock_food_square2" />
 
         <CheckBox
             android:id="@+id/cbHomeFood"
@@ -29,7 +29,7 @@
             android:layout_marginEnd="4dp"
             android:layout_gravity="end"
             android:button="@drawable/favourite"
-            android:buttonTint="@color/themeColor"/>
+            android:buttonTint="@color/colorAccent"/>
 
         <TextView
             android:id="@+id/txtHomeFoodName"
@@ -59,7 +59,7 @@
             android:layout_gravity="bottom"
             android:isIndicator="true"
             android:numStars="2"
-            android:progressTint="@color/themeColor"
+            android:progressTint="@color/colorAccent"
             android:rating="4.6"
             android:scaleX="0.25"
             android:scaleY="0.25"

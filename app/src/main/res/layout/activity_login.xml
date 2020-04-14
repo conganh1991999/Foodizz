@@ -1,102 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sign_in"
-    tools:context=".begin.LoginActivity">
+    android:background="@color/colorPrimary"
+    tools:context=".ui.LoginActivity">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.MaterialComponents.CardView"
+        style="@style/App.Card"
         android:layout_width="0dp"
-        android:layout_height="339dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="64dp"
-        app:cardCornerRadius="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/login_card_margin_se"
+        android:layout_marginEnd="@dimen/login_card_margin_se"
+        android:layout_marginBottom="@dimen/login_card_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignUpLogin"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="128dp"
-            android:layout_height="64dp"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="8dp"
-            android:text="Sign up"
-            android:textColor="@color/themeColor"
-            app:cornerRadius="5dp"
-            app:rippleColor="#FFCDD2" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignIn"
-            android:layout_width="128dp"
-            android:layout_height="64dp"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="72dp"
-            android:backgroundTint="@color/themeColor"
-            android:text="Sign in"
-            android:textColor="@android:color/white"
-            app:cornerRadius="5dp"
-            app:rippleColor="@color/rippleColor" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_gravity="bottom|center"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="240dp"
-            android:hint="Email"
-            app:boxStrokeColor="@color/themeColor"
-            app:hintTextColor="@color/themeColor">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtEmailLogin"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/App.TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                android:textCursorDrawable="@null" />
+                android:layout_height="@dimen/login_edit_text_height"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/login_edit_text_margin_se"
+                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
+                android:hint="@string/email">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmailLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_gravity="bottom|center"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="176dp"
-            android:hint="Password"
-            app:boxStrokeColor="@color/themeColor"
-            app:hintTextColor="@color/themeColor">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtPasswordLogin"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/App.TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textPassword"
-                android:textCursorDrawable="@null" />
+                android:layout_height="@dimen/login_edit_text_height"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/login_edit_text_margin_se"
+                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
+                android:hint="@string/password">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword" />
 
-        <CheckBox
-            android:id="@+id/cbRememberUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="136dp"
-            android:buttonTint="@color/themeColor"
-            android:text="Remember me"
-            android:textColor="@color/themeColor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/cbRememberUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/login_edit_text_margin_se"
+                android:text="@string/remember_user"
+                android:buttonTint="@color/colorAccent"
+                android:textColor="@color/colorAccent" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/App.ContainedButton"
+                android:id="@+id/btnSignIn"
+                android:layout_width="@dimen/login_button_width"
+                android:layout_height="@dimen/login_button_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@string/sign_in"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/App.TextButton"
+                android:id="@+id/btnSignUpLogin"
+                android:layout_width="@dimen/login_button_width"
+                android:layout_height="@dimen/login_button_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/sign_up"/>
+
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
