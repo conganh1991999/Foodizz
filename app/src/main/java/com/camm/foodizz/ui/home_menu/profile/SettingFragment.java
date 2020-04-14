@@ -1,4 +1,4 @@
-package com.camm.foodizz.home.me;
+package com.camm.foodizz.ui.home_menu.profile;
 
 import android.content.Intent;
 import android.os.Bundle;

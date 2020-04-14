@@ -1,22 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home_menu.home.HomeFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home_menu.home.HomeFragment">
+
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+        android:id="@+id/txtHomeQuestion"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/news_cycle"
+        android:text="What would you like to eat?"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loHomeSearch"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:hint="Find a food or restaurant"
+        app:boxStrokeColor="@color/colorAccent"
+        app:hintTextColor="@color/colorAccent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHomeSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHomeQuestion">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtHomeSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/news_cycle"
+            android:inputType="text"
+            android:textCursorDrawable="@null"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnHomeSearch"
+        style="@style/App.OutlinedButton.IconOnly"
+        android:layout_width="56dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/rippleColorPrimary"
+        android:gravity="start"
+        app:cornerRadius="8dp"
+        app:icon="@drawable/ic_search"
+        app:iconTint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#FFCCBC"
+        app:strokeWidth="0dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHomeCategory"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loHomeSearch" />
+
+    <TextView
+        android:id="@+id/txtBestFood"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/news_cycle"
+        android:text="Best Food"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHomeCategory" />
+
+    <TextView
+        android:id="@+id/txtBestRestaurant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/news_cycle"
+        android:text="Best Restaurant"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerHomeFood" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHomeFood"
+        android:layout_width="0dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerHomeCategory"
+        app:layout_constraintStart_toStartOf="@+id/recyclerHomeCategory"
+        app:layout_constraintTop_toBottomOf="@+id/txtBestFood" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHomeRestaurant"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerHomeFood"
+        app:layout_constraintStart_toStartOf="@+id/recyclerHomeFood"
+        app:layout_constraintTop_toBottomOf="@+id/txtBestRestaurant" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
