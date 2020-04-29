@@ -48,7 +48,7 @@ public class RestaurantMenuFragment extends Fragment {
 
         @Override
         public int getLayout() {
-            return R.layout.raw_food_home;
+            return R.layout.food_item_home;
         }
     }
 }

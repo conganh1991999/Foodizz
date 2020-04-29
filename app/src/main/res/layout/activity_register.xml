@@ -5,17 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".ui.RegisterActivity">
+    android:background="@color/temporaryBackground"
+    tools:context=".ui.entry.RegisterActivity">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/App.Card"
+        style="@style/App.CardView.CardInfo"
         android:id="@+id/materialCardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/login_card_margin_se"
-        android:layout_marginEnd="@dimen/login_card_margin_se"
-        android:layout_marginBottom="@dimen/login_card_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -36,6 +31,7 @@
                 app:civ_border_width="1dp" />
 
             <TextView
+                style="@style/App.TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -43,69 +39,57 @@
                 android:text="@string/select_photo" />
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_edit_text_height"
+                style="@style/App.TextInputLayout.Info"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
-                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
                 android:hint="@string/full_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtNameRegister"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/news_cycle"
                     android:inputType="text"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_edit_text_height"
+                style="@style/App.TextInputLayout.Info"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
-                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
                 android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmailRegister"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/news_cycle"
                     android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_edit_text_height"
+                style="@style/App.TextInputLayout.Info"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
-                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
                 android:hint="@string/password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/news_cycle"
                     android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_edit_text_height"
+                style="@style/App.TextInputLayout.Info"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
-                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
                 android:hint="@string/phone_number">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/news_cycle"
                     android:inputType="phone"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -113,8 +97,8 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/App.ContainedButton"
                 android:id="@+id/btnSignup"
-                android:layout_width="@dimen/login_button_width"
-                android:layout_height="@dimen/login_button_height"
+                android:layout_width="@dimen/info_button_width"
+                android:layout_height="@dimen/info_button_height"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"

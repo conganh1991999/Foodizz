@@ -1,4 +1,4 @@
-package com.camm.foodizz.ui;
+package com.camm.foodizz.ui.entry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

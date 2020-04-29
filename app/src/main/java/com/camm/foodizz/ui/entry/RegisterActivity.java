@@ -1,4 +1,4 @@
-package com.camm.foodizz.ui;
+package com.camm.foodizz.ui.entry;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,18 +42,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private static final String TAG = "RegisterActivity";
+
     private CircleImageView profileImage;
     private EditText edtNameRegister, edtEmailRegister, edtPasswordRegister, edtPhoneNumber;
     private Button btnSignup;
-    ProgressBar progressRegister;
+    private ProgressBar progressRegister;
 
-    private String username;
-    private String email;
-    private String password;
-    private String phone;
+    private String username, email, password, phone;
 
     private static final int REQUEST_CODE_FOLDER = 101;
-    private static final int REQUEST_CODE_PHONE_VERIFICATION = 171;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,19 +74,15 @@ public class RegisterActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressRegister.setVisibility(View.VISIBLE);
 
-                username = edtNameRegister.getText().toString();
-                email = edtEmailRegister.getText().toString();
-                password = edtPasswordRegister.getText().toString();
-                phone = edtPhoneNumber.getText().toString();
+                username = edtNameRegister.getText().toString().trim();
+                email = edtEmailRegister.getText().toString().trim();
+                password = edtPasswordRegister.getText().toString().trim();
+                phone = edtPhoneNumber.getText().toString().trim();
 
-                if(validateAccount()){
-
-                    Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
-                    intent.putExtra("phone", phone);
-                    startActivityForResult(intent, REQUEST_CODE_PHONE_VERIFICATION);
-
-                }
+                if(validateAccount())
+                    authenticateUser();
             }
         });
     }
@@ -108,35 +103,98 @@ public class RegisterActivity extends AppCompatActivity {
         if(email.equals("") || password.equals("") || username.equals("") || phone.equals("")){
             Toast.makeText(RegisterActivity.this, "Fields can't be empty",
                     Toast.LENGTH_SHORT).show();
+            progressRegister.setVisibility(View.GONE);
             return false;
         }
 
         if(!Pattern.matches(usernameRegex, username)){
             Toast.makeText(RegisterActivity.this, "Username can only contain letters, digits and underscores",
                     Toast.LENGTH_SHORT).show();
+            progressRegister.setVisibility(View.GONE);
             return false;
         }
 
         if(username.length() > 30){
             Toast.makeText(RegisterActivity.this, "Username too long",
                     Toast.LENGTH_SHORT).show();
+            progressRegister.setVisibility(View.GONE);
             return false;
         }
 
         return true;
     }
 
-    private void saveUserImage(final FirebaseUser user){
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_CODE_FOLDER &&
+                grantResults.length > 0 &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, REQUEST_CODE_FOLDER);
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
+            Uri uri = data.getData();
+            Picasso.get().load(uri).into(profileImage);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void authenticateUser(){
+        final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            if(currentUser != null) {
+                                saveUserData(currentUser.getUid());
+                            }
+                            else
+                                Log.d(TAG, "currentUser is null");
+                        } else {
+                            progressRegister.setVisibility(View.GONE);
+                            if(task.getException() != null)
+                                if(task.getException().getMessage() != null) {
+                                    Toast.makeText(RegisterActivity.this,
+                                            task.getException().getMessage(),
+                                            Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, task.getException().getMessage());
+                                }
+                                else
+                                    Log.d(TAG, "task.getException().getMessage() is null");
+                        }
+                    }
+                });
+    }
+
+    private void saveUserData(String userId){
+        saveUserImageToStorage(userId);
+        saveUserToDatabase(userId);
+
+        progressRegister.setVisibility(View.GONE);
+
+        Toast.makeText(RegisterActivity.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
+
+        gotoLoginActivity();
+    }
+
+    private void saveUserImageToStorage(final String userId){
 
         Calendar calendar = Calendar.getInstance();
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference("images").child("userImages");
+        StorageReference storageRef = storage.getReference("users");
         final StorageReference imageRef = storageRef.child("image" + calendar.getTimeInMillis() + ".png");
 
         // Get the data from an ImageView as bytes
-        profileImage.setDrawingCacheEnabled(true);
-        profileImage.buildDrawingCache();
         Bitmap bitmap = ((BitmapDrawable) profileImage.getDrawable()).getBitmap();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
@@ -147,7 +205,10 @@ public class RegisterActivity extends AppCompatActivity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(RegisterActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+                if(exception.getMessage() != null)
+                    Log.d(TAG, exception.getMessage());
+                else
+                    Log.d(TAG, "exception.getMessage() is null");
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -155,75 +216,31 @@ public class RegisterActivity extends AppCompatActivity {
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        saveUserToDatabase(user, uri.toString());
+                        saveUserImageToDatabase(userId, uri.toString());
                     }
                 });
             }
         });
     }
 
-    private void saveUserToDatabase(final FirebaseUser newUser, String userImage){
+    private void saveUserImageToDatabase(String userId, String imageUri){
+        FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference mRef = mDatabase.getReference("users").child(userId);
+        mRef.child("userImage").setValue(imageUri);
+    }
 
-        String userId;
-        assert newUser != null;
-        userId = newUser.getUid();
-
+    private void saveUserToDatabase(String userId){
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mRef = mDatabase.getReference("users").child(userId);
         mRef.child("userName").setValue(username);
-        mRef.child("userImage").setValue(userImage);
         mRef.child("phoneNumber").setValue(phone);
-
-        gotoLoginActivity();
     }
 
     private void gotoLoginActivity(){
-        Toast.makeText(RegisterActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
-        progressRegister.setVisibility(View.GONE);
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         intent.putExtra("email", email);
         intent.putExtra("password", password);
         startActivity(intent);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        if(requestCode == REQUEST_CODE_FOLDER && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            startActivityForResult(intent, REQUEST_CODE_FOLDER);
-        }
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
-            Uri uri = data.getData();
-            assert uri != null;
-            Picasso.get().load(uri).into(profileImage);
-        }
-        if(requestCode == REQUEST_CODE_PHONE_VERIFICATION && resultCode == RESULT_OK && data!=null){
-            if(data.getBooleanExtra("checker", false)){
-                progressRegister.setVisibility(View.VISIBLE);
-                final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    saveUserImage(mAuth.getCurrentUser());
-                                } else {
-                                    if(task.getException() != null)
-                                        Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
 }

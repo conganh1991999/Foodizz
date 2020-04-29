@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardHomeFood"
+    style="@style/App.CardView.CardFood">
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgHomeFood"
+            style="@style/FoodImage" />
+
+        <TextView
+            android:id="@+id/txtHomeFoodName"
+            style="@style/App.TextView.FoodName"
+            android:layout_below="@id/imgHomeFood" />
+
+        <TextView
+            android:id="@+id/txtHomeFoodRate"
+            style="@style/App.TextView.FoodRate"
+            android:layout_below="@id/imgHomeFood" />
+
+        <RatingBar
+            style="@style/App.RatingBar.FoodRatingBar"
+            android:layout_below="@id/imgHomeFood" />
+
+        <CheckBox
+            android:id="@+id/cbHomeFood"
+            style="@style/FoodLikeCheckBox"
+            android:layout_below="@id/imgHomeFood" />
+
+        <TextView
+            android:id="@+id/txtHomeFoodPrice"
+            style="@style/App.TextView.FoodPrice"
+            android:layout_below="@id/cbHomeFood" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

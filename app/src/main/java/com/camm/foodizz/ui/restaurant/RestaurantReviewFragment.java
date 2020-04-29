@@ -56,7 +56,7 @@ public class RestaurantReviewFragment extends Fragment {
 
         @Override
         public int getLayout() {
-            return R.layout.raw_restaurant_review;
+            return R.layout.restaurant_review_item;
         }
     }
 }

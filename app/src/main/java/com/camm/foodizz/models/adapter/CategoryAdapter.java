@@ -56,10 +56,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_ITEM) {
-            View view = LayoutInflater.from(context).inflate(R.layout.raw_category, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
             return new ItemViewHolder(view);
         } else {
-            View view = LayoutInflater.from(context).inflate(R.layout.raw_category_scroll, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.category_scroll, parent, false);
             return new LoadingViewHolder(view);
         }
     }

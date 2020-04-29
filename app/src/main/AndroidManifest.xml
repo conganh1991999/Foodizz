@@ -22,11 +22,14 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".ui.VerifyPhoneActivity" />
+        <activity android:name=".ui.entry.VerifyPhoneActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.restaurant.RestaurantActivity" />
         <activity android:name=".ui.food_detail.FoodDetailActivity" />
-        <activity android:name=".ui.RegisterActivity" />
-        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.entry.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.entry.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <meta-data
             android:name="preloaded_fonts"

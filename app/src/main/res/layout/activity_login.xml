@@ -5,16 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".ui.LoginActivity">
+    android:background="@color/temporaryBackground"
+    tools:context=".ui.entry.LoginActivity">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/App.Card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/login_card_margin_se"
-        android:layout_marginEnd="@dimen/login_card_margin_se"
-        android:layout_marginBottom="@dimen/login_card_margin_bottom"
+        style="@style/App.CardView.CardInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -25,35 +20,29 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_edit_text_height"
+                style="@style/App.TextInputLayout.Info"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
-                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
                 android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmailLogin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/news_cycle"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/App.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/login_edit_text_height"
+                style="@style/App.TextInputLayout.Info"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
-                android:layout_marginEnd="@dimen/login_edit_text_margin_se"
                 android:hint="@string/password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPasswordLogin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:fontFamily="@font/news_cycle"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -62,16 +51,17 @@
                 android:id="@+id/cbRememberUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/login_edit_text_margin_se"
+                android:layout_marginStart="@dimen/info_edit_text_horizontal_margin"
                 android:text="@string/remember_user"
+                android:fontFamily="@font/news_cycle"
                 android:buttonTint="@color/colorAccent"
                 android:textColor="@color/colorAccent" />
 
             <com.google.android.material.button.MaterialButton
                 style="@style/App.ContainedButton"
                 android:id="@+id/btnSignIn"
-                android:layout_width="@dimen/login_button_width"
-                android:layout_height="@dimen/login_button_height"
+                android:layout_width="@dimen/info_button_width"
+                android:layout_height="@dimen/info_button_height"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:text="@string/sign_in"/>
@@ -79,8 +69,8 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/App.TextButton"
                 android:id="@+id/btnSignUpLogin"
-                android:layout_width="@dimen/login_button_width"
-                android:layout_height="@dimen/login_button_height"
+                android:layout_width="@dimen/info_button_width"
+                android:layout_height="@dimen/info_button_height"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"

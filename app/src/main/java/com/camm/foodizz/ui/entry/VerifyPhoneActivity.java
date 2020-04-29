@@ -1,4 +1,4 @@
-package com.camm.foodizz.ui;
+package com.camm.foodizz.ui.entry;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,18 +69,21 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(VerifyPhoneActivity.this, "Verify code successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(VerifyPhoneActivity.this,
+                                    "Verify code successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent();
                             intent.putExtra("checker", true);
                             setResult(RESULT_OK, intent);
                             finish();
                         } else {
                             if(task.getException() != null){
-                                Toast.makeText(VerifyPhoneActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(VerifyPhoneActivity.this,
+                                        task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                             Intent intent = new Intent();
                             intent.putExtra("checker", false);
                             setResult(RESULT_OK, intent);
+                            finish();
                         }
                     }
                 });
@@ -128,6 +131,5 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             verificationId = s;
             // resendToken = forceResendingToken;
         }
-
     };
 }

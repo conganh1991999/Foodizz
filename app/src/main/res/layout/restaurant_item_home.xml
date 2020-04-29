@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardHomeRestaurant"
+    style="@style/App.CardView.CardRestaurant">
+
+    <RelativeLayout
+        android:layout_width="324dp"
+        android:layout_height="120dp">
+
+        <ImageView
+            style="@style/RestaurantLogo"
+            android:id="@+id/imgHomeRestaurantLogo" />
+
+        <TextView
+            style="@style/App.TextView.RestaurantName"
+            android:id="@+id/txtHomeRestaurantName"
+            android:layout_toEndOf="@id/imgHomeRestaurantLogo"/>
+
+        <TextView
+            style="@style/App.TextView.RestaurantRate"
+            android:id="@+id/txtHomeRestaurantRate"
+            android:layout_toEndOf="@id/imgHomeRestaurantLogo" />
+
+        <RatingBar
+            android:id="@+id/rbHomeRestaurant"
+            style="@style/App.RatingBar.RestaurantRatingBar" />
+
+        <TextView
+            android:id="@+id/txtHomeRestaurantRateNum"
+            style="@style/App.TextView.RestaurantNumOfRate" />
+
+        <TextView
+            style="@style/App.TextView.RestaurantCategory"
+            android:id="@+id/txtHomeRestaurantCategory1"
+            android:text="@string/mock_category_res1"
+            android:layout_below="@id/txtHomeRestaurantRateNum"
+            android:layout_toEndOf="@id/imgHomeRestaurantLogo"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            style="@style/App.TextView.RestaurantCategory"
+            android:id="@+id/txtHomeRestaurantCategory2"
+            android:text="@string/mock_category_res2"
+            android:layout_below="@id/txtHomeRestaurantRateNum"
+            android:layout_toEndOf="@id/txtHomeRestaurantCategory1"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            style="@style/App.TextView.RestaurantCategory"
+            android:id="@+id/txtHomeRestaurantCategory3"
+            android:text="@string/mock_category_res3"
+            android:layout_below="@id/txtHomeRestaurantRateNum"
+            android:layout_toEndOf="@id/txtHomeRestaurantCategory2"
+            android:layout_marginStart="8dp"/>
+
+        <ImageView
+            android:id="@+id/homeIconFocus"
+            style="@style/FocusIcon"
+            android:layout_below="@id/imgHomeRestaurantLogo"/>
+
+        <TextView
+            style="@style/App.TextView.RestaurantAddress"
+            android:id="@+id/txtHomeRestaurantAddress"
+            android:layout_below="@id/imgHomeRestaurantLogo"
+            android:layout_toEndOf="@id/homeIconFocus"/>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

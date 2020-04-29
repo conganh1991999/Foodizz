@@ -22,5 +22,22 @@
     <string name="select_photo">Select photo</string>
     <string name="full_name">Full Name</string>
     <string name="phone_number">Phone Number</string>
+    <string name="verify_message">Verify code will be sent to your phone within one minute</string>
+    <string name="enter_verify_code">Enter your verify code</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="find_food_restaurant">Find a food or restaurant</string>
+    <string name="best_food">Best Food</string>
+    <string name="best_restaurant">Best Restaurant</string>
+    <string name="mock_category_name">Fast Food</string>
+    <string name="hot_category">Hot Category</string>
+    <string name="mock_food_name">Pasta with ham</string>
+    <string name="mock_rate">4.6</string>
+    <string name="mock_food_price">$96.00</string>
+    <string name="mock_restaurant_name">Pizza Hut</string>
+    <string name="mock_num_of_rate">(240K)</string>
+    <string name="mock_category_res1">Pizza</string>
+    <string name="mock_category_res2">Fruits</string>
+    <string name="mock_category_res3">Grilled</string>
+    <string name="mock_restaurant_address">168 Hai Ba Trung, Da Kao, District 1, Ho Chi Minh City</string>
 
 </resources>
