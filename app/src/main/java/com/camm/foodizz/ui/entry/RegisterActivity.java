@@ -182,8 +182,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressRegister.setVisibility(View.GONE);
 
         Toast.makeText(RegisterActivity.this, "Sign up successfully!", Toast.LENGTH_SHORT).show();
-
-        gotoLoginActivity();
+        setLoginDataBack();
     }
 
     private void saveUserImageToStorage(final String userId){
@@ -236,11 +235,12 @@ public class RegisterActivity extends AppCompatActivity {
         mRef.child("phoneNumber").setValue(phone);
     }
 
-    private void gotoLoginActivity(){
-        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+    private void setLoginDataBack(){
+        Intent intent = new Intent();
         intent.putExtra("email", email);
         intent.putExtra("password", password);
-        startActivity(intent);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }
