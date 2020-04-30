@@ -1,10 +1,10 @@
-package com.camm.foodizz.models.data;
+package com.camm.foodizz.models;
 
-public class CategoryData {
+public class Category {
     private String categoryName;
     private String categoryImageUri;
 
-    public CategoryData(String categoryName, String categoryImageUri) {
+    public Category(String categoryName, String categoryImageUri) {
         this.categoryName = categoryName;
         this.categoryImageUri = categoryImageUri;
     }
@@ -16,4 +16,5 @@ public class CategoryData {
     public String getCategoryImageUri() {
         return categoryImageUri;
     }
+
 }

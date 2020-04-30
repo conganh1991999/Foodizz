@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.models.data.CategoryData;
+import com.camm.foodizz.models.Category;
 import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Picasso;
 
@@ -22,10 +22,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private final int VIEW_TYPE_ITEM = 0;
 
-    private ArrayList<CategoryData> listCategory;
+    private ArrayList<Category> listCategory;
     private Context context;
 
-    public CategoryAdapter(ArrayList<CategoryData> listCategory, Context context) {
+    public CategoryAdapter(ArrayList<Category> listCategory, Context context) {
         this.listCategory = listCategory;
         this.context = context;
     }

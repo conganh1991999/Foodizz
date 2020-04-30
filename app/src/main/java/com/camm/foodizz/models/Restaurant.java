@@ -1,8 +1,9 @@
-package com.camm.foodizz.models.data;
+package com.camm.foodizz.models;
 
 import java.util.ArrayList;
 
-public class RestaurantData {
+public class Restaurant {
+
     private String restaurantId;
     private String restaurantName;
     private String restaurantLogoUri;
@@ -11,11 +12,10 @@ public class RestaurantData {
     private double totalScore;
     private int numOfRate;
 
-    // home
-    public RestaurantData(String restaurantId, String restaurantName,
-                          String restaurantLogoUri, String restaurantImageUri,
-                          ArrayList<String> categoryName, double totalScore, int numOfRate
-    ) {
+    public Restaurant(String restaurantId, String restaurantName,
+                      String restaurantLogoUri, String restaurantImageUri,
+                      ArrayList<String> categoryName, double totalScore, int numOfRate)
+    {
         this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
         this.restaurantLogoUri = restaurantLogoUri;
@@ -44,7 +44,6 @@ public class RestaurantData {
     public ArrayList<String> getCategoryName() {
         return categoryName;
     }
-
 
     public int getNumOfRate() {
         return numOfRate;

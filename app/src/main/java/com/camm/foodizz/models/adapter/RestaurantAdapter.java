@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.models.data.RestaurantData;
+import com.camm.foodizz.models.Restaurant;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -23,10 +23,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private final int VIEW_TYPE_ITEM = 0;
 
-    private ArrayList<RestaurantData> listRestaurant;
+    private ArrayList<Restaurant> listRestaurant;
     private Context context;
 
-    public RestaurantAdapter(ArrayList<RestaurantData> listRestaurant, Context context) {
+    public RestaurantAdapter(ArrayList<Restaurant> listRestaurant, Context context) {
         this.listRestaurant = listRestaurant;
         this.context = context;
     }
