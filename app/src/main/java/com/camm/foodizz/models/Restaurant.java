@@ -1,8 +1,9 @@
 package com.camm.foodizz.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Restaurant {
+public class Restaurant implements Serializable {
 
     private String restaurantId;
     private String restaurantName;

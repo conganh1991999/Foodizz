@@ -26,13 +26,15 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private ArrayList<Restaurant> listRestaurant;
     private Context context;
 
+    private OnItemClickListener listener;
+
     public RestaurantAdapter(ArrayList<Restaurant> listRestaurant, Context context) {
         this.listRestaurant = listRestaurant;
         this.context = context;
     }
 
     // Provide a reference to the views for each data item
-    private static class ItemViewHolder extends RecyclerView.ViewHolder {
+    private class ItemViewHolder extends RecyclerView.ViewHolder {
         ImageView imgHomeRestaurantLogo;
         TextView txtHomeRestaurantName;
         RatingBar rbHomeRestaurant;
@@ -48,6 +50,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             txtHomeRestaurantCategory1 = itemView.findViewById(R.id.txtHomeRestaurantCategory1);
             txtHomeRestaurantCategory2 = itemView.findViewById(R.id.txtHomeRestaurantCategory2);
             txtHomeRestaurantCategory3 = itemView.findViewById(R.id.txtHomeRestaurantCategory3);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION)
+                        listener.onItemClick(listRestaurant.get(position));
+                }
+            });
+
         }
     }
 
@@ -105,4 +117,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         holder.txtHomeRestaurantCategory2.setText(listRestaurant.get(position).getCategoryName().get(1));
         holder.txtHomeRestaurantCategory3.setText(listRestaurant.get(position).getCategoryName().get(2));
     }
+
+    public interface OnItemClickListener{
+        void onItemClick(Restaurant restaurant);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
+
 }

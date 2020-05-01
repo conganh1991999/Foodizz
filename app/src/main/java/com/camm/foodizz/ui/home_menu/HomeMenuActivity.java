@@ -45,8 +45,6 @@ public class HomeMenuActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // TODO: bug here
-        verifyUserIsLoggedIn();
     }
 
     @Override
@@ -65,7 +63,7 @@ public class HomeMenuActivity extends AppCompatActivity {
 
     private void verifyUserIsLoggedIn(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user != null){
+        if(user != null){ // On first installation, user != null ??
             Toast.makeText(this, "User is logged in", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -74,4 +72,5 @@ public class HomeMenuActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
 }

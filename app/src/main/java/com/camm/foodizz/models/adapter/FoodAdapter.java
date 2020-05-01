@@ -27,13 +27,15 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Food> listFoods;
     private Context context;
 
+    private OnItemClickListener listener;
+
     public FoodAdapter(ArrayList<Food> listFoods, Context context) {
         this.listFoods = listFoods;
         this.context = context;
     }
 
     // Provide a reference to the views for each data item
-    private static class ItemViewHolder extends RecyclerView.ViewHolder {
+    private class ItemViewHolder extends RecyclerView.ViewHolder {
         ImageView imgHomeFood;
         CheckBox cbHomeFood;
         TextView txtHomeFoodName, txtHomeFoodPrice;
@@ -45,6 +47,15 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             txtHomeFoodName = itemView.findViewById(R.id.txtHomeFoodName);
             txtHomeFoodPrice = itemView.findViewById(R.id.txtHomeFoodPrice);
             txtHomeFoodRate = itemView.findViewById(R.id.txtHomeFoodRate);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION)
+                        listener.onItemClick(listFoods.get(position));
+                }
+            });
         }
     }
 
@@ -105,5 +116,14 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.txtHomeFoodRate.setText(new DecimalFormat("0.0").format(listFoods.get(position).getAverageScore()));
         holder.cbHomeFood.setChecked(false);
     }
+
+    public interface OnItemClickListener{
+        void onItemClick(Food food);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
+
 }
 
