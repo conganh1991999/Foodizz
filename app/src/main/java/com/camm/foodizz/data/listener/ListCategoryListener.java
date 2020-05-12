@@ -1,4 +1,6 @@
-package com.camm.foodizz.models.listener;
+package com.camm.foodizz.data.listener;
+
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,24 +14,32 @@ import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
 
-public class CategoryListener implements ChildEventListener {
+public class ListCategoryListener implements ChildEventListener {
 
     private ArrayList<Category> listCategory;
     private CategoryAdapter categoryAdapter;
+    private int oldListSize;
 
-    public CategoryListener(ArrayList<Category> listCategory, CategoryAdapter categoryAdapter) {
+    public ListCategoryListener(ArrayList<Category> listCategory, CategoryAdapter categoryAdapter) {
         this.listCategory = listCategory;
         this.categoryAdapter = categoryAdapter;
+        this.oldListSize = listCategory.size();
     }
 
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+        Log.d("ListenerCategory", "Changed!");
         Category data = new Category(
                 dataSnapshot.child("name").getValue(String.class),
                 dataSnapshot.child("image").getValue(String.class));
-        listCategory.add(data);
+        if(listCategory.size() < (oldListSize + 4)){
+            listCategory.add(data);
+        }
+        else {
+            HomeFragment.nextCategoryItemKey = dataSnapshot.getKey();
+            HomeFragment.isScrollingCategory = false;
+        }
         categoryAdapter.notifyDataSetChanged();
-        HomeFragment.isScrollingCategory = false;
     }
 
     @Override

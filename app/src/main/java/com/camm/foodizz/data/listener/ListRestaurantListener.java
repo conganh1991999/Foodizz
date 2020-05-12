@@ -1,4 +1,4 @@
-package com.camm.foodizz.models.listener;
+package com.camm.foodizz.data.listener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,14 +12,16 @@ import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
 
-public class RestaurantListener implements ChildEventListener {
+public class ListRestaurantListener implements ChildEventListener {
 
     private ArrayList<Restaurant> listRestaurant;
     private RestaurantAdapter restaurantAdapter;
+    private int oldListSize;
 
-    public RestaurantListener(ArrayList<Restaurant> listRestaurant, RestaurantAdapter restaurantAdapter) {
+    public ListRestaurantListener(ArrayList<Restaurant> listRestaurant, RestaurantAdapter restaurantAdapter) {
         this.listRestaurant = listRestaurant;
         this.restaurantAdapter = restaurantAdapter;
+        this.oldListSize = listRestaurant.size();
     }
 
     @Override
@@ -36,9 +38,14 @@ public class RestaurantListener implements ChildEventListener {
                 categoryName,
                 dataSnapshot.child("totalScore").getValue(Double.class),
                 dataSnapshot.child("numOfRate").getValue(Integer.class));
-        listRestaurant.add(data);
+        if(listRestaurant.size() < (oldListSize + 4)){
+            listRestaurant.add(data);
+        }
+        else {
+            HomeFragment.nextRestaurantItemKey = dataSnapshot.getKey();
+            HomeFragment.isScrollingRestaurant = false;
+        }
         restaurantAdapter.notifyDataSetChanged();
-        HomeFragment.isScrollingRestaurant = false;
     }
 
     @Override

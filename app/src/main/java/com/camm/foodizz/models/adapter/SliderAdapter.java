@@ -11,15 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.camm.foodizz.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class SliderAdapter extends PagerAdapter {
 
     private Context context;
-    private ArrayList<Integer> foodImage;
+    private ArrayList<String> foodImage;
 
-    public SliderAdapter(Context context, ArrayList<Integer> foodImage) {
+    public SliderAdapter(Context context, ArrayList<String> foodImage) {
         this.context = context;
         this.foodImage = foodImage;
     }
@@ -42,7 +43,7 @@ public class SliderAdapter extends PagerAdapter {
         View view = inflater.inflate(R.layout.slider_item, container, false);
 
         ImageView imageView = view.findViewById(R.id.sliderImage);
-        imageView.setImageResource(foodImage.get(position));
+        Picasso.get().load(foodImage.get(position)).into(imageView);
 
         container.addView(view);
 

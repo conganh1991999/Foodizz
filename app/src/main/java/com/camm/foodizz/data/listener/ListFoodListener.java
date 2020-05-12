@@ -1,10 +1,13 @@
-package com.camm.foodizz.models.listener;
+package com.camm.foodizz.data.listener;
+
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.camm.foodizz.models.Food;
 import com.camm.foodizz.models.adapter.FoodAdapter;
+import com.camm.foodizz.ui.home_menu.HomeMenuActivity;
 import com.camm.foodizz.ui.home_menu.home.HomeFragment;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -12,29 +15,35 @@ import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
 
-public class FoodListener implements ChildEventListener {
+public class ListFoodListener implements ChildEventListener {
 
     private ArrayList<Food> listFood;
     private FoodAdapter foodAdapter;
+    private int oldListSize;
 
-    public FoodListener(ArrayList<Food> listFood, FoodAdapter foodAdapter) {
+    public ListFoodListener(ArrayList<Food> listFood, FoodAdapter foodAdapter) {
         this.listFood = listFood;
         this.foodAdapter = foodAdapter;
+        this.oldListSize = listFood.size();
     }
 
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        Food data = new Food.FoodBuilder(
+        Food data = new Food(
                 dataSnapshot.getKey(),
                 dataSnapshot.child("name").getValue(String.class),
                 dataSnapshot.child("price").getValue(Double.class),
                 dataSnapshot.child("totalScore").getValue(Double.class),
-                dataSnapshot.child("numOfRate").getValue(Integer.class))
-                .setFoodSquareImageUri(dataSnapshot.child("squareImage").getValue(String.class))
-                .build();
-        listFood.add(data);
+                dataSnapshot.child("numOfRate").getValue(Integer.class));
+                data.setFoodSquareImageUri(dataSnapshot.child("squareImage").getValue(String.class));
+        if(listFood.size() < (oldListSize + 4)){
+            listFood.add(data);
+        }
+        else {
+            HomeFragment.nextFoodItemKey = dataSnapshot.getKey();
+            HomeFragment.isScrollingFood = false;
+        }
         foodAdapter.notifyDataSetChanged();
-        HomeFragment.isScrollingFood = false;
     }
 
     @Override

@@ -70,6 +70,22 @@
         <item name="android:stepSize">0.5</item>
     </style>
 
+    <style name="App.LikeCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:button">@drawable/favourite</item>
+        <item name="android:buttonTint">@color/colorAccent</item>
+    </style>
+
+    <style name="App.TabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabRippleColor">@color/rippleColorPrimary</item>
+        <item name="tabTextColor">@color/colorAccent</item>
+    </style>
+
     <!-- Login and Register -->
     <style name="App.CardView.CardInfo">
         <item name="android:layout_width">0dp</item>
@@ -141,13 +157,9 @@
         <item name="android:layout_marginTop">8dp</item>
     </style>
 
-    <style name="FoodLikeCheckBox">
-        <item name="android:layout_width">24dp</item>
-        <item name="android:layout_height">24dp</item>
+    <style name="App.LikeCheckBox.FoodLikeCheckBox">
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:button">@drawable/favourite</item>
-        <item name="android:buttonTint">@color/colorAccent</item>
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
@@ -242,5 +254,16 @@
     </style>
 
     <!-- -->
+    
+    <!-- Food Detail Activity -->
+    <style name="App.TextButton.QuantityButton">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="cornerRadius">@dimen/info_button_corner_radius</item>
+        <item name="rippleColor">@color/rippleColorSecondary</item>
+        <item name="elevation">2dp</item>
+    </style>
 
 </resources>

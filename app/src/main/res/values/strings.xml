@@ -39,5 +39,13 @@
     <string name="mock_category_res2">Fruits</string>
     <string name="mock_category_res3">Grilled</string>
     <string name="mock_restaurant_address">168 Hai Ba Trung, Da Kao, District 1, Ho Chi Minh City</string>
+    <string name="by">by</string>
+    <string name="mock_restaurant_name_low">pizza hut</string>
+    <string name="details">Details</string>
+    <string name="reviews">Reviews</string>
+    <string name="mock_food_detail">If you are hungry for success, food content marketing could be the answer. Food puns are as irresistible as mom\'s apple pie. There\'s no denying that good food-related content has the potential draw in the crowds. If you are hungry for success, food content marketing could be the answer.</string>
+    <string name="add_to_bag">Add to Bag</string>
+    <string name="increase">+</string>
+    <string name="decrease">-</string>
 
 </resources>

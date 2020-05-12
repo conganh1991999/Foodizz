@@ -9,17 +9,18 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerFoodDetail"
         android:layout_width="match_parent"
-        android:layout_height="216dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
+        style="@style/App.CardView"
         android:layout_width="0dp"
-        android:layout_height="464dp"
+        android:layout_height="432dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="1dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,85 +40,76 @@
 
         <CheckBox
             android:id="@+id/cbDetailFood"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="28dp"
-            android:layout_gravity="center|top"
-            android:button="@drawable/favourite"
-            android:buttonTint="@color/colorAccent" />
+            style="@style/App.LikeCheckBox"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="28dp" />
 
         <TextView
+            style="@style/App.TextView"
             android:id="@+id/txtDetailFoodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Grilled Salmon"
-            android:textSize="18sp"
-            android:fontFamily="@font/news_cycle"
-            android:textStyle="bold"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp" />
+            android:layout_marginTop="48dp"
+            android:text="@string/mock_food_name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
+            style="@style/App.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="by"
-            android:textSize="12sp"
-            android:fontFamily="@font/news_cycle"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="76dp"/>
+            android:layout_marginTop="76dp"
+            android:text="@string/by"
+            android:textSize="12sp" />
 
         <TextView
+            style="@style/App.TextView"
             android:id="@+id/txtRestaurantHasFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="pizza hut"
-            android:fontFamily="@font/news_cycle"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="72dp"/>
+            android:layout_marginTop="72dp"
+            android:text="@string/mock_restaurant_name_low"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
+            style="@style/App.TextView"
             android:id="@+id/txtDetailFoodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$96.00"
-            android:fontFamily="@font/news_cycle"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:layout_gravity="end"
+            android:layout_marginTop="70dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="70dp"/>
+            android:text="@string/mock_food_price"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:layout_marginTop="100dp"
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabIndicatorFullWidth="false"
-            app:tabRippleColor="@color/rippleColorPrimary"
-            app:tabTextColor="@color/colorAccent">
+            style="@style/App.TabLayout"
+            android:layout_marginTop="100dp">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabDetailFood"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Details" />
+                android:text="@string/details" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabReviewFood"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Reviews" />
-
+                android:text="@string/reviews" />
         </com.google.android.material.tabs.TabLayout>
 
         <fragment
             android:id="@+id/fragment_detail_review"
-            android:name="com.camm.foodizz.ui.food_detail.FoodReviewFragment"
+            android:name="com.camm.foodizz.ui.food_detail.FoodDetailFragment"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
-            android:layout_gravity="center|bottom" />
+            android:layout_height="304dp"
+            android:layout_gravity="bottom" />
 
     </com.google.android.material.card.MaterialCardView>
 

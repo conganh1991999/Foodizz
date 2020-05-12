@@ -28,7 +28,7 @@
 
         <CheckBox
             android:id="@+id/cbHomeFood"
-            style="@style/FoodLikeCheckBox"
+            style="@style/App.LikeCheckBox.FoodLikeCheckBox"
             android:layout_below="@id/imgHomeFood" />
 
         <TextView

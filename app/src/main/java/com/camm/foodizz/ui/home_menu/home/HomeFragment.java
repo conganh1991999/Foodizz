@@ -2,7 +2,6 @@ package com.camm.foodizz.ui.home_menu.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.data.factory.QueryFactory;
 import com.camm.foodizz.models.Category;
 import com.camm.foodizz.models.Food;
 import com.camm.foodizz.models.Restaurant;
@@ -21,12 +19,13 @@ import com.camm.foodizz.models.adapter.CategoryAdapter;
 import com.camm.foodizz.models.adapter.FoodAdapter;
 import com.camm.foodizz.models.adapter.RestaurantAdapter;
 import com.camm.foodizz.models.decorator.FoodListDivider;
-import com.camm.foodizz.models.listener.CategoryListener;
-import com.camm.foodizz.models.listener.FoodListener;
-import com.camm.foodizz.models.listener.RestaurantListener;
+import com.camm.foodizz.data.listener.ListCategoryListener;
+import com.camm.foodizz.data.listener.ListFoodListener;
+import com.camm.foodizz.data.listener.ListRestaurantListener;
 import com.camm.foodizz.ui.food_detail.FoodDetailActivity;
 import com.camm.foodizz.ui.restaurant.RestaurantActivity;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
@@ -40,21 +39,19 @@ public class HomeFragment extends Fragment {
     private LinearLayoutManager categoryManager, foodManager, restaurantManager;
 
     private ArrayList<Category> listCategory;
-    private CategoryAdapter categoryAdapter;
-    public static boolean isScrollingCategory = false;
-    private int startCategory = 0, endCategory = 5;
-
     private ArrayList<Restaurant> listRestaurant;
-    private RestaurantAdapter restaurantAdapter;
-    public static boolean isScrollingRestaurant = false;
-    private double startRestaurant = 5.0, endRestaurant = 5.0;
-
     private ArrayList<Food> listFood;
-    private FoodAdapter foodAdapter;
-    public static boolean isScrollingFood = false;
-    private double startFood = 5.0, endFood = 5.0;
 
-    private Handler handler = new Handler();
+    private CategoryAdapter categoryAdapter;
+    private RestaurantAdapter restaurantAdapter;
+    private FoodAdapter foodAdapter;
+
+    public static boolean isScrollingCategory = false, isScrollingRestaurant = false, isScrollingFood = false;
+    public static String nextCategoryItemKey = null, nextRestaurantItemKey = null, nextFoodItemKey = null;
+
+    private Query categoryRef, restaurantRef, foodRef;
+    private ChildEventListener categoryListener, restaurantListener, foodListener;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -90,7 +87,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void manageRecyclerViews(){
+    private void manageRecyclerViews() {
         recyclerCategory = view.findViewById(R.id.recyclerHomeCategory);
         recyclerFood = view.findViewById(R.id.recyclerHomeFood);
         recyclerRestaurant = view.findViewById(R.id.recyclerHomeRestaurant);
@@ -109,7 +106,7 @@ public class HomeFragment extends Fragment {
         recyclerRestaurant.setLayoutManager(restaurantManager);
     }
 
-    private void initItemClickListener(){
+    private void initItemClickListener() {
         foodAdapter.setOnItemClickListener(new FoodAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Food food) {
@@ -129,32 +126,39 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void preloadCategoryData(){
+    private void preloadCategoryData() {
 
-        Query categoryRef = QueryFactory.makeCategoryQuery(startCategory, endCategory);
+        categoryRef = FirebaseDatabase.getInstance().getReference("categories")
+                .orderByKey()
+                .limitToFirst(5);
 
-        ChildEventListener categoryListener = new CategoryListener(listCategory, categoryAdapter);
+        categoryListener = new ListCategoryListener(listCategory, categoryAdapter);
 
         categoryRef.addChildEventListener(categoryListener);
+
     }
 
-    private void preloadFoodData(){
+    private void preloadFoodData() {
 
-        Query foodRef = QueryFactory.makeFoodQuery(startFood, endFood);
+        foodRef = FirebaseDatabase.getInstance().getReference("foods")
+                .orderByKey()
+                .limitToFirst(5);
 
-        ChildEventListener foodListener = new FoodListener(listFood, foodAdapter);
+        foodListener = new ListFoodListener(listFood, foodAdapter);
 
         foodRef.addChildEventListener(foodListener);
 
     }
 
-    private void preloadRestaurantData(){
+    private void preloadRestaurantData() {
 
-        Query RestaurantRef = QueryFactory.makeRestaurantQuery(startRestaurant, endRestaurant);
+        restaurantRef = FirebaseDatabase.getInstance().getReference("restaurants")
+                .orderByKey()
+                .limitToFirst(5);
 
-        ChildEventListener restaurantListener = new RestaurantListener(listRestaurant, restaurantAdapter);
+        restaurantListener = new ListRestaurantListener(listRestaurant, restaurantAdapter);
 
-        RestaurantRef.addChildEventListener(restaurantListener);
+        restaurantRef.addChildEventListener(restaurantListener);
 
     }
 
@@ -179,7 +183,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void initScrollRestaurantListener(){
+    private void initScrollRestaurantListener() {
         recyclerRestaurant.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -200,7 +204,7 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void initScrollFoodListener(){
+    private void initScrollFoodListener() {
         recyclerFood.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -222,71 +226,53 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadMoreCategory() {
-        // TODO: paging efficiently
-        startCategory += 6; endCategory += 6;
 
-        listCategory.add(null);
-        categoryAdapter.notifyItemInserted(listCategory.size() - 1);
+        categoryRef.removeEventListener(categoryListener);
+        categoryRef = FirebaseDatabase.getInstance().getReference("categories")
+                .orderByKey()
+                .startAt(nextCategoryItemKey)
+                .limitToFirst(5);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                listCategory.remove(listCategory.size() - 1);
-                categoryAdapter.notifyItemRemoved(listCategory.size());
+        categoryListener = new ListCategoryListener(listCategory, categoryAdapter);
 
-                Query categoryRef = QueryFactory.makeCategoryQuery(startCategory, endCategory);
+        categoryRef.addChildEventListener(categoryListener);
 
-                ChildEventListener categoryListener = new CategoryListener(listCategory, categoryAdapter);
-
-                categoryRef.addChildEventListener(categoryListener);
-
-            }
-        }, 2000);
     }
 
-    private void loadMoreFood(){
-        // TODO: do paging efficiently
-        startFood -= 0.1; endFood -= 0.1;
+    private void loadMoreFood() {
 
-        listFood.add(null);
-        foodAdapter.notifyItemInserted(listFood.size() - 1);
+        foodRef.removeEventListener(foodListener);
+        foodRef = FirebaseDatabase.getInstance().getReference("foods")
+                .orderByKey()
+                .startAt(nextFoodItemKey)
+                .limitToFirst(5);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                listFood.remove(listFood.size() - 1);
-                foodAdapter.notifyItemRemoved(listFood.size());
+        foodListener = new ListFoodListener(listFood, foodAdapter);
 
-                Query ref = QueryFactory.makeFoodQuery(startFood, endFood);
+        foodRef.addChildEventListener(foodListener);
 
-                ChildEventListener foodListener = new FoodListener(listFood, foodAdapter);
-
-                ref.addChildEventListener(foodListener);
-
-            }
-        }, 2000);
     }
 
-    private void loadMoreRestaurant(){
-        // TODO: do paging efficiently
-        startRestaurant -= 0.1; endRestaurant -= 0.1;
+    private void loadMoreRestaurant() {
 
-        listRestaurant.add(null);
-        restaurantAdapter.notifyItemInserted(listRestaurant.size() - 1);
+        restaurantRef.removeEventListener(restaurantListener);
+        restaurantRef = FirebaseDatabase.getInstance().getReference("restaurants")
+                .orderByKey()
+                .startAt(nextRestaurantItemKey)
+                .limitToFirst(5);
 
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                listRestaurant.remove(listRestaurant.size() - 1);
-                restaurantAdapter.notifyItemRemoved(listRestaurant.size());
+        restaurantListener = new ListRestaurantListener(listRestaurant, restaurantAdapter);
 
-                Query RestaurantRef = QueryFactory.makeRestaurantQuery(startRestaurant, endRestaurant);
+        restaurantRef.addChildEventListener(restaurantListener);
 
-                ChildEventListener restaurantListener = new RestaurantListener(listRestaurant, restaurantAdapter);
+    }
 
-                RestaurantRef.addChildEventListener(restaurantListener);
-            }
-        }, 2000);
+    @Override
+    public void onStop() {
+        super.onStop();
+        categoryRef.removeEventListener(categoryListener);
+        foodRef.removeEventListener(foodListener);
+        restaurantRef.removeEventListener(restaurantListener);
     }
 
 }

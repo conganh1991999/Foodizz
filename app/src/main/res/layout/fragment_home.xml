@@ -16,8 +16,6 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginEnd="4dp"
         android:hint="@string/find_food_restaurant"
-        android:focusable="false"
-        android:focusableInTouchMode="true"
         app:layout_constraintEnd_toStartOf="@+id/btnHomeSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
