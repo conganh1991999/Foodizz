@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 // TODO: change this class, remove builder
-public class Food implements Serializable {
+public class Food {
 
     private String foodId;
     private String foodName;
@@ -76,6 +76,14 @@ public class Food implements Serializable {
 
     public String getRestaurantName() {
         return restaurantName;
+    }
+
+    public double getTotalScore() {
+        return totalScore;
+    }
+
+    public int getNumOfRate() {
+        return numOfRate;
     }
 
     public double getAverageScore(){

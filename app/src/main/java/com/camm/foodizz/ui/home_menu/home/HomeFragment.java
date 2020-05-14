@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(Food food) {
                 Intent intent = new Intent(getContext(), FoodDetailActivity.class);
-                intent.putExtra("food", food);
+                intent.putExtra("foodId", food.getFoodId());
                 startActivity(intent);
             }
         });
@@ -268,8 +268,8 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
+        super.onDestroy();
         categoryRef.removeEventListener(categoryListener);
         foodRef.removeEventListener(foodListener);
         restaurantRef.removeEventListener(restaurantListener);
