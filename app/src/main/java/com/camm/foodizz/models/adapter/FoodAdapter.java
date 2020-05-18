@@ -113,7 +113,7 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.txtHomeFoodPrice.setText(String.format("$%s",
                 new DecimalFormat("######.00").format(listFoods.get(position).getFoodPrice())));
         Picasso.get().load(listFoods.get(position).getFoodSquareImageUri()).into(holder.imgHomeFood);
-        holder.txtHomeFoodRate.setText(new DecimalFormat("0.0").format(listFoods.get(position).getAverageScore()));
+        holder.txtHomeFoodRate.setText(new DecimalFormat("0.0").format(listFoods.get(position).getTotalScore()));
         holder.cbHomeFood.setChecked(false);
     }
 

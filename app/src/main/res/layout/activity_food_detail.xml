@@ -7,7 +7,7 @@
     tools:context=".ui.food_detail.FoodDetailActivity">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerFoodDetail"
+        android:id="@+id/foodDetailImagesPager"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,6 +89,7 @@
 
         <com.google.android.material.tabs.TabLayout
             style="@style/App.TabLayout"
+            android:id="@+id/foodDetailTabLayout"
             android:layout_marginTop="100dp">
 
             <com.google.android.material.tabs.TabItem
@@ -104,12 +105,13 @@
                 android:text="@string/reviews" />
         </com.google.android.material.tabs.TabLayout>
 
-        <fragment
-            android:id="@+id/fragment_detail_review"
-            android:name="com.camm.foodizz.ui.food_detail.FoodDetailFragment"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/foodDetailFragmentPager"
             android:layout_width="match_parent"
-            android:layout_height="304dp"
-            android:layout_gravity="bottom" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="132dp">
+
+        </androidx.viewpager.widget.ViewPager>
 
     </com.google.android.material.card.MaterialCardView>
 

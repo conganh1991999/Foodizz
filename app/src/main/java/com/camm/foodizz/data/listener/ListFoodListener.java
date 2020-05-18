@@ -41,7 +41,7 @@ public class ListFoodListener implements ChildEventListener {
         }
         else {
             HomeFragment.nextFoodItemKey = dataSnapshot.getKey();
-            HomeFragment.isScrollingFood = false;
+            HomeFragment.isScrollingFood = true;
         }
         foodAdapter.notifyDataSetChanged();
     }

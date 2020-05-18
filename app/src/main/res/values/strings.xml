@@ -47,5 +47,9 @@
     <string name="add_to_bag">Add to Bag</string>
     <string name="increase">+</string>
     <string name="decrease">-</string>
+    <string name="mock_my_name">Linda Cherry</string>
+    <string name="mock_review_time">April 4, 2019</string>
+    <string name="mock_review">The food is amazing, everyone else already said everything about the food.</string>
+    <string name="review">Review</string>
 
 </resources>

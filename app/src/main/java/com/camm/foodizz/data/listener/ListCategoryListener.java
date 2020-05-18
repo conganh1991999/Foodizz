@@ -28,7 +28,6 @@ public class ListCategoryListener implements ChildEventListener {
 
     @Override
     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-        Log.d("ListenerCategory", "Changed!");
         Category data = new Category(
                 dataSnapshot.child("name").getValue(String.class),
                 dataSnapshot.child("image").getValue(String.class));
@@ -37,7 +36,7 @@ public class ListCategoryListener implements ChildEventListener {
         }
         else {
             HomeFragment.nextCategoryItemKey = dataSnapshot.getKey();
-            HomeFragment.isScrollingCategory = false;
+            HomeFragment.isScrollingCategory = true;
         }
         categoryAdapter.notifyDataSetChanged();
     }

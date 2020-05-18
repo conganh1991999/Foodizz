@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class FoodDetailViewModel extends AndroidViewModel {
 
     private MutableLiveData<Food> foodLiveData;
+    private String foodId;
 
     public FoodDetailViewModel(@NonNull Application application) {
         super(application);
@@ -25,18 +26,35 @@ public class FoodDetailViewModel extends AndroidViewModel {
     }
 
     void setFood(String foodId){
+        this.foodId = foodId;
         DatabaseReference foodRef = FirebaseDatabase.getInstance()
                 .getReference("foods")
                 .child(foodId);
         foodRef.addValueEventListener(new FoodItemListener());
     }
 
+    String getFoodId(){
+        return foodId;
+    }
     MutableLiveData<Food> getFood(){
         return this.foodLiveData;
     }
+    double getTotalScore(){
+        if (foodLiveData.getValue() != null)
+            return foodLiveData.getValue().getTotalScore();
+        else
+            return -1;
+    }
+    int getNumOfRate(){
+        if (foodLiveData.getValue() != null)
+            return foodLiveData.getValue().getNumOfRate();
+        else
+            return -1;
+    }
+
 
     private class FoodItemListener implements ValueEventListener {
-
+        // TODO: listen effectively
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

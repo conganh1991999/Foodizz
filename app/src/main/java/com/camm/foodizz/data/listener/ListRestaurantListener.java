@@ -43,7 +43,7 @@ public class ListRestaurantListener implements ChildEventListener {
         }
         else {
             HomeFragment.nextRestaurantItemKey = dataSnapshot.getKey();
-            HomeFragment.isScrollingRestaurant = false;
+            HomeFragment.isScrollingRestaurant = true;
         }
         restaurantAdapter.notifyDataSetChanged();
     }

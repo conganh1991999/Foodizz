@@ -86,8 +86,4 @@ public class Food {
         return numOfRate;
     }
 
-    public double getAverageScore(){
-        return totalScore/numOfRate;
-    }
-
 }

@@ -2,25 +2,25 @@ package com.camm.foodizz.models;
 
 public class User {
     private String userName;
-    private String userImageUri;
-    private String userPhoneNumber;
+    private String userImage;
+    private String phoneNumber;
 
-    public User(String userName, String userImageUri, String userPhoneNumber) {
+    public User(String userName, String userImage, String phoneNumber) {
         this.userName = userName;
-        this.userImageUri = userImageUri;
-        this.userPhoneNumber = userPhoneNumber;
+        this.userImage = userImage;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public String getUserImageUri() {
-        return userImageUri;
+    public String getUserImage() {
+        return userImage;
     }
 
-    public String getUserPhoneNumber() {
-        return userPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
 }

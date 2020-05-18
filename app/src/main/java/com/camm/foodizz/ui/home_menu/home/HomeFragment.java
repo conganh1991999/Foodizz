@@ -172,11 +172,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (!isScrollingCategory) {
+                if (isScrollingCategory) {
                     if (categoryManager != null &&
                             categoryManager.findLastCompletelyVisibleItemPosition() == listCategory.size() - 1) {
                         loadMoreCategory();
-                        isScrollingCategory = true;
+                        isScrollingCategory = false;
                     }
                 }
             }
@@ -193,11 +193,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (!isScrollingRestaurant) {
+                if (isScrollingRestaurant) {
                     if (restaurantManager != null &&
                             restaurantManager.findLastCompletelyVisibleItemPosition() == listRestaurant.size() - 1) {
                         loadMoreRestaurant();
-                        isScrollingRestaurant = true;
+                        isScrollingRestaurant = false;
                     }
                 }
             }
@@ -214,11 +214,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                if (!isScrollingFood) {
+                if (isScrollingFood) {
                     if (foodManager != null &&
                             foodManager.findLastCompletelyVisibleItemPosition() == listFood.size() - 1) {
                         loadMoreFood();
-                        isScrollingFood = true;
+                        isScrollingFood = false;
                     }
                 }
             }

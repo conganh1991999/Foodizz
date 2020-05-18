@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
 import com.camm.foodizz.models.decorator.FoodListDivider;
-import com.xwray.groupie.GroupAdapter;
-import com.xwray.groupie.GroupieViewHolder;
-import com.xwray.groupie.Item;
 
 public class RestaurantMenuFragment extends Fragment {
     @Nullable
@@ -23,32 +20,20 @@ public class RestaurantMenuFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurant_menu, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewRestaurantMenu);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager managerMenu = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(managerMenu);
-
-        GroupAdapter adapter = new GroupAdapter<GroupieViewHolder>();
-        adapter.add(new FoodItem());
-        adapter.add(new FoodItem());
-
-        recyclerView.addItemDecoration(new FoodListDivider(0, 0, 0, 30));
-
-        recyclerView.setAdapter(adapter);
+//        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewRestaurantMenu);
+//        recyclerView.setHasFixedSize(true);
+//        LinearLayoutManager managerMenu = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+//        recyclerView.setLayoutManager(managerMenu);
+//
+//        GroupAdapter adapter = new GroupAdapter<GroupieViewHolder>();
+//        adapter.add(new FoodItem());
+//        adapter.add(new FoodItem());
+//
+//        recyclerView.addItemDecoration(new FoodListDivider(0, 0, 0, 30));
+//
+//        recyclerView.setAdapter(adapter);
 
         return view;
     }
 
-    class FoodItem extends Item<GroupieViewHolder> {
-
-        @Override
-        public void bind(@NonNull GroupieViewHolder viewHolder, int position) {
-
-        }
-
-        @Override
-        public int getLayout() {
-            return R.layout.food_item_home;
-        }
-    }
 }

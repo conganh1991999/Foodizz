@@ -128,7 +128,7 @@
     <style name="FoodImage">
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">150dp</item>
-        <item name="android:src">@drawable/mock_food_square2</item>
+        <item name="android:src">@drawable/mock_food_square</item>
     </style>
 
     <style name="App.TextView.FoodName">
@@ -173,6 +173,67 @@
         <item name="android:layout_alignParentRight">true</item>
     </style>
     <!-- -->
+    
+    <!-- Food Detail Activity -->
+    <style name="App.TextButton.QuantityButton">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="cornerRadius">@dimen/info_button_corner_radius</item>
+        <item name="rippleColor">@color/rippleColorSecondary</item>
+        <item name="elevation">2dp</item>
+    </style>
+
+    <style name="App.TextView.UserName">
+        <item name="android:layout_width">152dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="App.RatingBar.ReviewRatingBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:numStars">5</item>
+        <item name="android:layout_marginStart">126dp</item>
+    </style>
+
+    <style name="App.TextView.ReviewTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="App.TextView.Review">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:maxWidth">250dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="App.TextInputLayout.Review">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_gravity">bottom|center</item>
+        <item name="android:layout_marginTop">50dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <style name="App.OutlinedButton.IconOnly.ReviewButton">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">60dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/colorAccent</item>
+    </style>
+
 
     <!-- Restaurant Item -->
     <style name="App.CardView.CardRestaurant">
@@ -254,16 +315,5 @@
     </style>
 
     <!-- -->
-    
-    <!-- Food Detail Activity -->
-    <style name="App.TextButton.QuantityButton">
-        <item name="android:layout_width">56dp</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">24sp</item>
-        <item name="cornerRadius">@dimen/info_button_corner_radius</item>
-        <item name="rippleColor">@color/rippleColorSecondary</item>
-        <item name="elevation">2dp</item>
-    </style>
 
 </resources>
