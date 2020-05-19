@@ -11,12 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
-import com.camm.foodizz.models.Review;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.camm.foodizz.models.UserReview;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -27,14 +22,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class FoodReviewAdapter extends RecyclerView.Adapter<FoodReviewAdapter.ReviewViewHolder> {
 
-    private ArrayList<Review> listReviews;
+    private ArrayList<UserReview> listReviews;
     private Context context;
 
-    private String userId = "";
-    private DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("users");
-    private ValueEventListener listener;
-
-    public FoodReviewAdapter(ArrayList<Review> listReviews, Context context) {
+    public FoodReviewAdapter(ArrayList<UserReview> listReviews, Context context) {
         this.listReviews = listReviews;
         this.context = context;
     }
@@ -62,44 +53,17 @@ public class FoodReviewAdapter extends RecyclerView.Adapter<FoodReviewAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
-        if(!userId.isEmpty()){
-            mRef.child(userId).removeEventListener(listener);
-        }
-
         holder.personReviewOnFoodDetail.setText(listReviews.get(position).getReview());
         holder.personRbOnFoodDetail.setRating((float) listReviews.get(position).getRating());
         SimpleDateFormat sfd = new SimpleDateFormat("dd MMMM yyyy");
         holder.txtTimeOfFoodReview.setText(sfd.format(new Date(listReviews.get(position).getTimestamp()*1000)));
-
-        userId = listReviews.get(position).getUserId();
-        listener = new UserListener(holder);
-        mRef.child(userId).addListenerForSingleValueEvent(listener);
+        Picasso.get().load(listReviews.get(position).getUserImage()).into(holder.personImageOnFoodDetail);
+        holder.personNameOnFoodDetail.setText(listReviews.get(position).getUserName());
     }
 
     @Override
     public int getItemCount() {
         return listReviews.size();
-    }
-
-    static class UserListener implements ValueEventListener{
-
-        ReviewViewHolder holder;
-
-        UserListener(ReviewViewHolder holder) {
-            this.holder = holder;
-        }
-
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            Picasso.get().load(dataSnapshot.child("userImage").getValue(String.class)).into(holder.personImageOnFoodDetail);
-            holder.personNameOnFoodDetail.setText(dataSnapshot.child("userName").getValue(String.class));
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-
     }
 
 }

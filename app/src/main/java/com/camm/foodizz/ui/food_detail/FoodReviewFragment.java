@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.camm.foodizz.R;
 import com.camm.foodizz.data.listener.ListReviewListener;
+import com.camm.foodizz.models.UserReview;
 import com.camm.foodizz.models.adapter.FoodReviewAdapter;
 import com.camm.foodizz.models.Review;
 import com.camm.foodizz.models.decorator.ReviewListDivider;
@@ -60,7 +61,7 @@ public class FoodReviewFragment extends Fragment {
 
     private FoodReviewAdapter adapter;
 
-    private ArrayList<Review> listReview;
+    private ArrayList<UserReview> listReview;
 
     private Query reviewRef;
     private ChildEventListener reviewListener;
@@ -77,6 +78,8 @@ public class FoodReviewFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_food_reviews, container, false);
+
+        isReviewInserted = false; isScrollingReview = false;
 
         if(getActivity() != null) {
             foodModel = new ViewModelProvider(getActivity()).get(FoodDetailViewModel.class);
@@ -110,8 +113,7 @@ public class FoodReviewFragment extends Fragment {
         });
 
         preLoadReviewData();
-        // TODO: bug in initScrollListener
-        // initScrollReviewListener();
+        initScrollReviewListener();
 
         return view;
     }
@@ -212,7 +214,6 @@ public class FoodReviewFragment extends Fragment {
     }
 
     private void loadMoreReview() {
-
         reviewRef.removeEventListener(reviewListener);
         reviewRef = FirebaseDatabase.getInstance().getReference("foods")
                 .child(foodId).child("reviews")
@@ -221,9 +222,7 @@ public class FoodReviewFragment extends Fragment {
                 .limitToFirst(5);
 
         reviewListener = new ListReviewListener(listReview, adapter);
-
         reviewRef.addChildEventListener(reviewListener);
-
     }
 
     private void saveUserReview(String review){

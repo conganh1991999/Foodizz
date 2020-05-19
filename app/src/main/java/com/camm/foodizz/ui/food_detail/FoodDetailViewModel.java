@@ -48,7 +48,8 @@ public class FoodDetailViewModel extends AndroidViewModel {
     }
 
     void removeListener(){
-        foodRef.removeEventListener(foodListener);
+        if(foodRef != null && foodListener != null)
+            foodRef.removeEventListener(foodListener);
     }
 
     String getFoodId(){
@@ -67,16 +68,16 @@ public class FoodDetailViewModel extends AndroidViewModel {
         return foodNumOfRate;
     }
 
-
     private class FoodItemListener implements ValueEventListener {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            Double totalScore = dataSnapshot.child("totalScore").getValue(Double.class);
+            Integer numOfRate = dataSnapshot.child("numOfRate").getValue(Integer.class);
 
             Food foodItem = new Food(dataSnapshot.getKey(),
                     dataSnapshot.child("name").getValue(String.class),
                     dataSnapshot.child("price").getValue(Double.class),
-                    dataSnapshot.child("totalScore").getValue(Double.class),
-                    dataSnapshot.child("numOfRate").getValue(Integer.class));
+                    totalScore, numOfRate);
 
             foodItem.setFoodDetail(dataSnapshot.child("detail").getValue(String.class));
             foodItem.setRestaurantName(dataSnapshot.child("restaurantName").getValue(String.class));
@@ -90,8 +91,8 @@ public class FoodDetailViewModel extends AndroidViewModel {
             foodItem.setFoodLandscapeImageUri(foodLandscapeImageUri);
 
             foodLiveData.setValue(foodItem);
-            foodTotalScore.setValue(dataSnapshot.child("totalScore").getValue(Double.class));
-            foodNumOfRate.setValue(dataSnapshot.child("numOfRate").getValue(Integer.class));
+            foodTotalScore.setValue(totalScore);
+            foodNumOfRate.setValue(numOfRate);
         }
 
         @Override

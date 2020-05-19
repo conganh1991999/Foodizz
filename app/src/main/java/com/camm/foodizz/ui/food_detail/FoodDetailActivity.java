@@ -80,7 +80,6 @@ public class FoodDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        Log.d(TAG, "FoodDetailActivity: onDestroy()");
         super.onDestroy();
         if(foodModel != null)
             foodModel.removeListener();

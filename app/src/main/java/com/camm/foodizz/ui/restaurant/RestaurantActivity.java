@@ -2,25 +2,33 @@ package com.camm.foodizz.ui.restaurant;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.camm.foodizz.R;
+import com.camm.foodizz.models.Restaurant;
 import com.camm.foodizz.models.adapter.PagerAdapter;
 import com.google.android.material.tabs.TabLayout;
+import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantActivity extends AppCompatActivity {
 
     private static final String TAG = "RestaurantActivity";
+    private static int INTEND_SENDER = 0; // 0: from FoodDetailActivity, 1: from HomeActivity
 
     private RestaurantViewModel restaurantModel;
+    private Restaurant restaurant;
 
     private ImageView imgRestaurant, imgRestaurantLogo;
     private TextView txtRestaurantName, txtRestaurantRate, txtRestaurantRateNum,
@@ -28,8 +36,8 @@ public class RestaurantActivity extends AppCompatActivity {
             txtRestaurantAddress;
     private RatingBar rbRestaurant;
 
-    private TabLayout restaurantTabLayout;
     private ViewPager restaurantFragmentPager;
+    private TabLayout restaurantTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +46,20 @@ public class RestaurantActivity extends AppCompatActivity {
 
         mapping();
 
-
-
-
+        restaurantModel = new ViewModelProvider(this).get(RestaurantViewModel.class);
+        getIntentData();
+        if(INTEND_SENDER == 0){
+            restaurantModel.getRestaurant().observe(this, new Observer<Restaurant>() {
+                @Override
+                public void onChanged(Restaurant restaurant) {
+                    restaurantModel.listenForRatingPoint();
+                    updateUI(restaurant);
+                }
+            });
+        }
+        else{
+            updateUI(this.restaurant);
+        }
 
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new RestaurantMenuFragment());
@@ -56,6 +75,13 @@ public class RestaurantActivity extends AppCompatActivity {
         restaurantTabLayout.setupWithViewPager(restaurantFragmentPager);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(restaurantModel != null)
+            restaurantModel.removeListener();
+    }
+
     private void mapping() {
         imgRestaurant = findViewById(R.id.imgRestaurant);
         imgRestaurantLogo = findViewById(R.id.imgRestaurantLogo);
@@ -69,6 +95,35 @@ public class RestaurantActivity extends AppCompatActivity {
         rbRestaurant = findViewById(R.id.rbRestaurant);
         restaurantTabLayout = findViewById(R.id.restaurantTabLayout);
         restaurantFragmentPager = findViewById(R.id.restaurantFragmentPager);
+    }
+
+    private void getIntentData(){
+        Intent intent = getIntent();
+        String restaurantId = intent.getStringExtra("restaurantId");
+        if(restaurantId == null){
+            restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
+            if(restaurant != null) {
+                INTEND_SENDER = 1;
+                restaurantModel.setRestaurant(restaurant.getRestaurantId(), INTEND_SENDER);
+            }
+        }
+        else{
+            INTEND_SENDER = 0;
+            restaurantModel.setRestaurant(restaurantId, INTEND_SENDER);
+        }
+    }
+
+    private void updateUI(Restaurant restaurant){
+        Picasso.get().load(restaurant.getRestaurantImageUri()).into(imgRestaurant);
+        Picasso.get().load(restaurant.getRestaurantLogoUri()).into(imgRestaurantLogo);
+        txtRestaurantName.setText(restaurant.getRestaurantName());
+        txtRestaurantRate.setText(new DecimalFormat("0.0").format(restaurant.getTotalScore()));
+        txtRestaurantRateNum.setText(String.format("(%s)", String.valueOf(restaurant.getNumOfRate())));
+        txtRestaurantCategory1.setText(restaurant.getCategoryName().get(0));
+        txtRestaurantCategory2.setText(restaurant.getCategoryName().get(1));
+        txtRestaurantCategory3.setText(restaurant.getCategoryName().get(2));
+        txtRestaurantAddress.setText(restaurant.getRestaurantAddress());
+        rbRestaurant.setRating((float) restaurant.getTotalScore());
     }
 
 }
