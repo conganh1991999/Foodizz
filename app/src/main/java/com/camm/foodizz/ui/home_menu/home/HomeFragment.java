@@ -87,6 +87,20 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        isScrollingCategory = false;
+        isScrollingRestaurant = false;
+        isScrollingFood = false;
+        nextCategoryItemKey = null;
+        nextRestaurantItemKey = null;
+        nextFoodItemKey = null;
+        categoryRef.removeEventListener(categoryListener);
+        foodRef.removeEventListener(foodListener);
+        restaurantRef.removeEventListener(restaurantListener);
+    }
+
     private void manageRecyclerViews() {
         recyclerCategory = view.findViewById(R.id.recyclerHomeCategory);
         recyclerFood = view.findViewById(R.id.recyclerHomeFood);

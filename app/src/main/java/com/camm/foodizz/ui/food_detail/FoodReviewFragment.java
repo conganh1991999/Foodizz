@@ -63,12 +63,12 @@ public class FoodReviewFragment extends Fragment {
 
     private ArrayList<UserReview> listReview;
 
-    private Query reviewRef;
+    private Query reviewRef, userRef;
     private ChildEventListener reviewListener;
+    private ValueEventListener userListener;
 
     public static String nextReviewItemKey = null;
     public static boolean isScrollingReview = false;
-
     public static boolean isReviewInserted = false;
 
     private double currentScore;
@@ -78,8 +78,6 @@ public class FoodReviewFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_food_reviews, container, false);
-
-        isReviewInserted = false; isScrollingReview = false;
 
         if(getActivity() != null) {
             foodModel = new ViewModelProvider(getActivity()).get(FoodDetailViewModel.class);
@@ -121,24 +119,30 @@ public class FoodReviewFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-            foodModel.getTotalScore().observe(getViewLifecycleOwner(), new Observer<Double>() {
-                @Override
-                public void onChanged(Double aDouble) {
-                    currentScore = aDouble;
-                }
-            });
-            foodModel.getNumOfRate().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-                @Override
-                public void onChanged(Integer integer) {
-                    currentNumOfRate = integer;
-                }
-            });
+        foodModel.getTotalScore().observe(getViewLifecycleOwner(), new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                currentScore = aDouble;
+            }
+        });
+        foodModel.getNumOfRate().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                currentNumOfRate = integer;
+            }
+        });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        reviewRef.removeEventListener(reviewListener);
+        nextReviewItemKey = null;
+        isScrollingReview = false;
+        isReviewInserted = false;
+        if(reviewRef != null && reviewListener != null)
+            reviewRef.removeEventListener(reviewListener);
+        if(userRef != null && userListener != null)
+            userRef.removeEventListener(userListener);
     }
 
     private void mapping(){
@@ -160,8 +164,8 @@ public class FoodReviewFragment extends Fragment {
         FirebaseUser myInfo = FirebaseAuth.getInstance().getCurrentUser();
         if(myInfo != null){
             String myId = myInfo.getUid();
-            DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("users");
-            mRef.child(myId).addListenerForSingleValueEvent(new ValueEventListener() {
+            userRef = FirebaseDatabase.getInstance().getReference("users").child(myId);
+            userListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String myImage = dataSnapshot.child("userImage").getValue(String.class);
@@ -174,8 +178,8 @@ public class FoodReviewFragment extends Fragment {
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-            });
-
+            };
+            userRef.addListenerForSingleValueEvent(userListener);
         }
     }
 
@@ -243,15 +247,10 @@ public class FoodReviewFragment extends Fragment {
 
     private void updateTotalFoodScore(double rating){
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("foods").child(foodId);
-        if(currentScore == -1 || currentNumOfRate == -1){
-            Log.d(TAG, "FoodReviewFragment: foodLiveData.getValue() == null");
-        }
-        else{
-            currentScore = currentScore*currentNumOfRate + rating;
-            currentNumOfRate += 1;
-            mRef.child("numOfRate").setValue(currentNumOfRate);
-            mRef.child("totalScore").setValue(currentScore/currentNumOfRate);
-        }
+        currentScore = currentScore * currentNumOfRate + rating;
+        currentNumOfRate += 1;
+        mRef.child("numOfRate").setValue(currentNumOfRate);
+        mRef.child("totalScore").setValue(currentScore / currentNumOfRate);
     }
 
 }

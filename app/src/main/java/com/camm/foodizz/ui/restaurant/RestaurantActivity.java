@@ -24,8 +24,7 @@ import java.util.List;
 
 public class RestaurantActivity extends AppCompatActivity {
 
-    private static final String TAG = "RestaurantActivity";
-    private static int INTEND_SENDER = 0; // 0: from FoodDetailActivity, 1: from HomeActivity
+    private int intendSender = 0; // 0: from FoodDetailActivity, 1: from HomeActivity
 
     private RestaurantViewModel restaurantModel;
     private Restaurant restaurant;
@@ -48,7 +47,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
         restaurantModel = new ViewModelProvider(this).get(RestaurantViewModel.class);
         getIntentData();
-        if(INTEND_SENDER == 0){
+        if(intendSender == 0){
             restaurantModel.getRestaurant().observe(this, new Observer<Restaurant>() {
                 @Override
                 public void onChanged(Restaurant restaurant) {
@@ -60,6 +59,19 @@ public class RestaurantActivity extends AppCompatActivity {
         else{
             updateUI(this.restaurant);
         }
+        restaurantModel.getTotalScore().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double aDouble) {
+                txtRestaurantRate.setText(new DecimalFormat("0.0").format(aDouble));
+                rbRestaurant.setRating(aDouble.floatValue());
+            }
+        });
+        restaurantModel.getNumOfRate().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                txtRestaurantRateNum.setText(String.format("(%s)", String.valueOf(integer)));
+            }
+        });
 
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new RestaurantMenuFragment());
@@ -103,13 +115,13 @@ public class RestaurantActivity extends AppCompatActivity {
         if(restaurantId == null){
             restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
             if(restaurant != null) {
-                INTEND_SENDER = 1;
-                restaurantModel.setRestaurant(restaurant.getRestaurantId(), INTEND_SENDER);
+                intendSender = 1;
+                restaurantModel.setRestaurant(restaurant.getRestaurantId(), intendSender);
             }
         }
         else{
-            INTEND_SENDER = 0;
-            restaurantModel.setRestaurant(restaurantId, INTEND_SENDER);
+            intendSender = 0;
+            restaurantModel.setRestaurant(restaurantId, intendSender);
         }
     }
 

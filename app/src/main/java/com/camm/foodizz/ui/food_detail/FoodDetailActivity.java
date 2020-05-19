@@ -42,14 +42,12 @@ public class FoodDetailActivity extends AppCompatActivity {
     private TabLayout foodDetailTabLayout;
 
     private int currentPosition = 0;
-    private static boolean SLIDER_CREATED = false;
+    private boolean sliderCreated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
-
-        SLIDER_CREATED = false;
 
         mapping();
 
@@ -81,8 +79,9 @@ public class FoodDetailActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(foodModel != null)
+        if(foodModel != null){
             foodModel.removeListener();
+        }
     }
 
     private void mapping(){
@@ -130,7 +129,7 @@ public class FoodDetailActivity extends AppCompatActivity {
     }
 
     private void createSliderShow(ArrayList<String> foodLandscapeImageUri) {
-        if(!SLIDER_CREATED){
+        if(!sliderCreated){
             foodDetailImagesPager.setAdapter(new SliderAdapter(FoodDetailActivity.this, foodLandscapeImageUri));
             indicator.setViewPager(foodDetailImagesPager);
             final Handler handler = new Handler();
@@ -154,7 +153,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                 }
             }, 250, 2500);
         }
-        SLIDER_CREATED = true;
+        sliderCreated = true;
     }
 
 }

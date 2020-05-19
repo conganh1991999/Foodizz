@@ -1,14 +1,14 @@
 package com.camm.foodizz.data.listener;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import com.camm.foodizz.models.UserReview;
 import com.camm.foodizz.models.adapter.FoodReviewAdapter;
-import com.camm.foodizz.models.Review;
+import com.camm.foodizz.models.adapter.RestaurantReviewAdapter;
 import com.camm.foodizz.ui.food_detail.FoodReviewFragment;
+import com.camm.foodizz.ui.restaurant.RestaurantReviewFragment;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,12 +21,12 @@ import java.util.ArrayList;
 public class ListReviewListener implements ChildEventListener {
 
     private ArrayList<UserReview> listReview;
-    private FoodReviewAdapter foodReviewAdapter;
+    private Adapter adapter;
     private int counter = 5;
 
-    public ListReviewListener(ArrayList<UserReview> listReview, FoodReviewAdapter foodReviewAdapter) {
+    public ListReviewListener(ArrayList<UserReview> listReview, Adapter adapter) {
         this.listReview = listReview;
-        this.foodReviewAdapter = foodReviewAdapter;
+        this.adapter = adapter;
     }
 
     @Override
@@ -42,13 +42,27 @@ public class ListReviewListener implements ChildEventListener {
                         dataSnapshot.child("timestamp").getValue(Long.class)
                 ));
             }
-            if(FoodReviewFragment.isReviewInserted)
-                FoodReviewFragment.isReviewInserted = false;
-            else
-                counter -= 1;
+            if(adapter instanceof FoodReviewAdapter){
+                if(FoodReviewFragment.isReviewInserted)
+                    FoodReviewFragment.isReviewInserted = false;
+                else
+                    counter -= 1;
+            }
+            else if (adapter instanceof RestaurantReviewAdapter){
+                if(RestaurantReviewFragment.isReviewInserted)
+                    RestaurantReviewFragment.isReviewInserted = false;
+                else
+                    counter -= 1;
+            }
         } else {
-            FoodReviewFragment.nextReviewItemKey = dataSnapshot.getKey();
-            FoodReviewFragment.isScrollingReview = true;
+            if(adapter instanceof FoodReviewAdapter){
+                FoodReviewFragment.nextReviewItemKey = dataSnapshot.getKey();
+                FoodReviewFragment.isScrollingReview = true;
+            }
+            else if (adapter instanceof RestaurantReviewAdapter){
+                RestaurantReviewFragment.nextReviewItemKey = dataSnapshot.getKey();
+                RestaurantReviewFragment.isScrollingReview = true;
+            }
         }
     }
 
@@ -93,7 +107,7 @@ public class ListReviewListener implements ChildEventListener {
                     rating,
                     timestamp);
             listReview.add(userReview);
-            foodReviewAdapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
         }
 
         @Override

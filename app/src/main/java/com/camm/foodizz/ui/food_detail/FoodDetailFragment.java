@@ -1,7 +1,6 @@
 package com.camm.foodizz.ui.food_detail;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class FoodDetailFragment extends Fragment {
     private Button btnAddToBag, btnIncreaseFood, btnDecreaseFood;
     private NotificationBadge mBadge;
 
-    private static int QUANTITY = 0;
+    private int quantity = 0;
 
     @Nullable
     @Override
@@ -37,31 +36,31 @@ public class FoodDetailFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_food_details, container, false);
         mapping();
 
-        mBadge.setNumber(QUANTITY);
+        mBadge.setNumber(quantity);
 
         btnIncreaseFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QUANTITY += 1;
-                mBadge.setNumber(QUANTITY);
+                quantity += 1;
+                mBadge.setNumber(quantity);
             }
         });
 
         btnDecreaseFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QUANTITY -= 1;
-                if(QUANTITY < 0)
-                    QUANTITY = 0;
-                mBadge.setNumber(QUANTITY);
+                quantity -= 1;
+                if(quantity < 0)
+                    quantity = 0;
+                mBadge.setNumber(quantity);
             }
         });
 
         btnAddToBag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QUANTITY = 0;
-                mBadge.setNumber(QUANTITY);
+                quantity = 0;
+                mBadge.setNumber(quantity);
                 Toast.makeText(getContext(),"Added", Toast.LENGTH_SHORT).show();
                 // TODO: Send orders to Cart
             }
