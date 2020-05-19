@@ -16,9 +16,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- Base application theme. -->
+
 
     <!-- App Components -->
-
     <style name="App.CardView" parent="Widget.MaterialComponents.CardView">
 
     </style>
@@ -85,6 +86,8 @@
         <item name="tabRippleColor">@color/rippleColorPrimary</item>
         <item name="tabTextColor">@color/colorAccent</item>
     </style>
+    <!-- App Components -->
+
 
     <!-- Login and Register -->
     <style name="App.CardView.CardInfo">
@@ -102,7 +105,8 @@
         <item name="android:layout_marginStart">@dimen/info_edit_text_horizontal_margin</item>
         <item name="android:layout_marginEnd">@dimen/info_edit_text_horizontal_margin</item>
     </style>
-    <!-- -->
+    <!-- Login and Register -->
+
 
     <!-- Fragment Home -->
     <style name="App.TextView.ListHeader">
@@ -112,7 +116,8 @@
         <item name="android:layout_marginEnd">@dimen/activity_horizontal_margin</item>
         <item name="android:textSize">18sp</item>
     </style>
-    <!-- -->
+    <!-- Fragment Home -->
+
 
     <!-- Food Item -->
     <style name="App.CardView.CardFood">
@@ -172,8 +177,9 @@
         <item name="android:layout_marginEnd">4dp</item>
         <item name="android:layout_alignParentRight">true</item>
     </style>
-    <!-- -->
-    
+    <!-- Food Item -->
+
+
     <!-- Food Detail Activity -->
     <style name="App.TextButton.QuantityButton">
         <item name="android:layout_width">56dp</item>
@@ -184,7 +190,10 @@
         <item name="rippleColor">@color/rippleColorSecondary</item>
         <item name="elevation">2dp</item>
     </style>
+    <!-- Food Detail Activity -->
 
+
+    <!-- Review -->
     <style name="App.TextView.UserName">
         <item name="android:layout_width">152dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -214,6 +223,15 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="App.OutlinedButton.IconOnly.ReviewButton">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">60dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/colorAccent</item>
+    </style>
+
     <style name="App.TextInputLayout.Review">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">56dp</item>
@@ -224,15 +242,7 @@
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:focusable">false</item>
     </style>
-
-    <style name="App.OutlinedButton.IconOnly.ReviewButton">
-        <item name="android:layout_width">56dp</item>
-        <item name="android:layout_height">40dp</item>
-        <item name="android:layout_marginTop">60dp</item>
-        <item name="android:layout_marginStart">16dp</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="strokeColor">@color/colorAccent</item>
-    </style>
+    <!-- Review -->
 
 
     <!-- Restaurant Item -->
@@ -242,7 +252,7 @@
         <item name="android:layout_margin">2dp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
-        <item name="cardCornerRadius">10dp</item>
+        <item name="cardCornerRadius">@dimen/restaurant_card_corner_radius</item>
         <item name="rippleColor">@color/rippleColorPrimary</item>
     </style>
 
@@ -313,7 +323,6 @@
         <item name="android:textSize">12sp</item>
         <item name="android:text">@string/mock_restaurant_address</item>
     </style>
-
-    <!-- -->
+    <!-- Restaurant Item -->
 
 </resources>

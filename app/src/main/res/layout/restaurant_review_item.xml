@@ -6,66 +6,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgSomeoneOnRestaurant"
+        android:id="@+id/personImageOnRestaurant"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/mock_profile_me"
         app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="2dp"
+        app:civ_border_width="1dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nameSomeoneOnRestaurant"
-        android:layout_width="152dp"
-        android:layout_height="wrap_content"
+        style="@style/App.TextView.UserName"
+        android:id="@+id/personNameOnRestaurant"
         android:layout_marginStart="8dp"
-        android:text="John Hopkins"
-        android:textStyle="bold"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/imgSomeoneOnRestaurant"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/personImageOnRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtTimeOfReviewRestaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="April 4, 2019"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/imgSomeoneOnRestaurant"
-        app:layout_constraintTop_toBottomOf="@+id/nameSomeoneOnRestaurant" />
+        style="@style/App.TextView.ReviewTime"
+        android:id="@+id/txtTimeOfRestaurantReview"
+        android:text="@string/mock_review_time"
+        app:layout_constraintStart_toEndOf="@+id/personImageOnRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/personNameOnRestaurant"/>
 
     <RatingBar
-        android:id="@+id/rbSomeoneOnRestaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
+        style="@style/App.RatingBar.ReviewRatingBar"
+        android:id="@+id/personRbOnRestaurant"
         android:isIndicator="true"
-        android:numStars="5"
-        android:progressTint="@color/colorAccent"
-        android:rating="4.6"
-        android:scaleX="0.25"
-        android:scaleY="0.25"
-        android:stepSize="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtSomeoneOnRestaurant"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:maxWidth="300dp"
-        android:text="The food is amazing, everyone else already
-said everything about the food."
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/imgSomeoneOnRestaurant"
-        app:layout_constraintTop_toBottomOf="@+id/txtTimeOfReviewRestaurant" />
+        style="@style/App.TextView.Review"
+        android:id="@+id/personReviewOnRestaurant"
+        android:text="@string/mock_review"
+        app:layout_constraintStart_toEndOf="@+id/personImageOnRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/txtTimeOfRestaurantReview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

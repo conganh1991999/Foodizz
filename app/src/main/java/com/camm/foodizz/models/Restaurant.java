@@ -9,18 +9,21 @@ public class Restaurant implements Serializable {
     private String restaurantName;
     private String restaurantLogoUri;
     private String restaurantImageUri;
+    private String restaurantAddress;
     private ArrayList<String> categoryName;
     private double totalScore;
     private int numOfRate;
 
     public Restaurant(String restaurantId, String restaurantName,
                       String restaurantLogoUri, String restaurantImageUri,
-                      ArrayList<String> categoryName, double totalScore, int numOfRate)
+                      String restaurantAddress, ArrayList<String> categoryName,
+                      double totalScore, int numOfRate)
     {
         this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
         this.restaurantLogoUri = restaurantLogoUri;
         this.restaurantImageUri = restaurantImageUri;
+        this.restaurantAddress = restaurantAddress;
         this.categoryName = categoryName;
         this.totalScore = totalScore;
         this.numOfRate = numOfRate;
@@ -42,6 +45,10 @@ public class Restaurant implements Serializable {
         return restaurantImageUri;
     }
 
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
     public ArrayList<String> getCategoryName() {
         return categoryName;
     }
@@ -50,7 +57,7 @@ public class Restaurant implements Serializable {
         return numOfRate;
     }
 
-    public double getAverageScore(){
-        return totalScore/numOfRate;
+    public double getTotalScore() {
+        return totalScore;
     }
 }

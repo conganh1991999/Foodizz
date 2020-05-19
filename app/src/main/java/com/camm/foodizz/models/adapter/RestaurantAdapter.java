@@ -38,7 +38,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         ImageView imgHomeRestaurantLogo;
         TextView txtHomeRestaurantName;
         RatingBar rbHomeRestaurant;
-        TextView txtHomeRestaurantRate, txtHomeRestaurantRateNum;
+        TextView txtHomeRestaurantRate, txtHomeRestaurantRateNum, txtHomeRestaurantAddress;
         TextView txtHomeRestaurantCategory1, txtHomeRestaurantCategory2, txtHomeRestaurantCategory3;
         ItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -50,7 +50,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             txtHomeRestaurantCategory1 = itemView.findViewById(R.id.txtHomeRestaurantCategory1);
             txtHomeRestaurantCategory2 = itemView.findViewById(R.id.txtHomeRestaurantCategory2);
             txtHomeRestaurantCategory3 = itemView.findViewById(R.id.txtHomeRestaurantCategory3);
-
+            txtHomeRestaurantAddress = itemView.findViewById(R.id.txtHomeRestaurantAddress);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -110,12 +110,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private void populateItemRows(ItemViewHolder holder, int position) {
         Picasso.get().load(listRestaurant.get(position).getRestaurantLogoUri()).into(holder.imgHomeRestaurantLogo);
         holder.txtHomeRestaurantName.setText(listRestaurant.get(position).getRestaurantName());
-        holder.rbHomeRestaurant.setRating((float) listRestaurant.get(position).getAverageScore());
-        holder.txtHomeRestaurantRate.setText(new DecimalFormat("0.0").format(listRestaurant.get(position).getAverageScore()));
+        holder.rbHomeRestaurant.setRating((float) listRestaurant.get(position).getTotalScore());
+        holder.txtHomeRestaurantRate.setText(new DecimalFormat("0.0").format(listRestaurant.get(position).getTotalScore()));
         holder.txtHomeRestaurantRateNum.setText(String.format("(%s)", String.valueOf(listRestaurant.get(position).getNumOfRate())));
         holder.txtHomeRestaurantCategory1.setText(listRestaurant.get(position).getCategoryName().get(0));
         holder.txtHomeRestaurantCategory2.setText(listRestaurant.get(position).getCategoryName().get(1));
         holder.txtHomeRestaurantCategory3.setText(listRestaurant.get(position).getCategoryName().get(2));
+        holder.txtHomeRestaurantAddress.setText(listRestaurant.get(position).getRestaurantAddress());
     }
 
     public interface OnItemClickListener{

@@ -1,163 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/myProfileImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_gravity="top|center"
         android:layout_marginTop="16dp"
         android:src="@drawable/mock_profile_crush"
         app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="2dp"
+        app:civ_border_width="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/myProfileName"
+        style="@style/App.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Cherry Cherry"
+        android:text="@string/mock_my_name"
         android:textColor="@color/notFocusColor"
-        android:fontFamily="@font/news_cycle"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/myProfileImage" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/myLocation"
+        style="@style/App.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ho Chi Minh"
-        android:fontFamily="@font/news_cycle"
+        android:text="@string/mock_my_location"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/locationIcon" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/locationIcon"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:src="@drawable/ic_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/myProfileName" />
 
     <TextView
-        android:id="@+id/textView9"
+        style="@style/App.TextView"
+        android:id="@+id/txtNumOfFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/news_cycle"
-        android:text="500"
+        android:text="@string/mock_num_of_friends"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtExperiences"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myLocation" />
+
+    <TextView
+        style="@style/App.TextView"
+        android:id="@+id/txtExperiences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mock_experiences"
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintStart_toEndOf="@+id/txtNumOfFriends"
+        app:layout_constraintTop_toBottomOf="@+id/myLocation" />
 
     <TextView
-        android:id="@+id/textView10"
+        style="@style/App.TextView"
+        android:id="@+id/txtFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/news_cycle"
-        android:text="250K"
-        android:textColor="@color/colorAccent"
+        android:text="@string/friends"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintEnd_toEndOf="@+id/txtNumOfFriends"
+        app:layout_constraintStart_toStartOf="@+id/txtNumOfFriends"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumOfFriends" />
 
     <TextView
-        android:id="@+id/textView11"
+        style="@style/App.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/news_cycle"
-        android:text="540"
-        android:textColor="@color/colorAccent"
+        android:text="@string/experience"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Follower"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Experience"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Following"
-        android:fontFamily="@font/news_cycle"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintEnd_toEndOf="@+id/txtExperiences"
+        app:layout_constraintStart_toStartOf="@+id/txtExperiences"
+        app:layout_constraintTop_toBottomOf="@+id/txtExperiences" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
+        style="@style/App.TabLayout"
+        android:id="@+id/profileTabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:tabIndicatorColor="@color/colorAccent"
-        app:tabIndicatorFullWidth="false"
-        app:tabRippleColor="@color/rippleColorPrimary"
-        app:tabTextColor="@color/colorAccent">
+        app:layout_constraintTop_toBottomOf="@+id/txtFriends">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Loves" />
+            android:text="@string/loves" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Yours" />
+            android:text="@string/yours" />
 
     </com.google.android.material.tabs.TabLayout>
 
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.camm.foodizz.ui.home_menu.profile.SettingFragment"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/profileFragmentPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/profileTabLayout">
+
+    </androidx.viewpager.widget.ViewPager>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

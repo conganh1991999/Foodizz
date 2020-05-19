@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,21 +70,24 @@ public class FoodReviewFragment extends Fragment {
 
     public static boolean isReviewInserted = false;
 
+    private double currentScore;
+    private int currentNumOfRate;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_food_reviews, container, false);
+
+        if(getActivity() != null) {
+            foodModel = new ViewModelProvider(getActivity()).get(FoodDetailViewModel.class);
+            foodId = foodModel.getFoodId();
+        }
 
         mapping();
 
         manageRecyclerViews();
 
         getCurrentUserInfo();
-
-        if(getActivity() != null) {
-            foodModel = new ViewModelProvider(getActivity()).get(FoodDetailViewModel.class);
-            foodId = foodModel.getFoodId();
-        }
 
         listReview = new ArrayList<>();
         adapter = new FoodReviewAdapter(listReview, getContext());
@@ -106,9 +110,27 @@ public class FoodReviewFragment extends Fragment {
         });
 
         preLoadReviewData();
-        initScrollReviewListener();
+        // TODO: bug in initScrollListener
+        // initScrollReviewListener();
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+            foodModel.getTotalScore().observe(getViewLifecycleOwner(), new Observer<Double>() {
+                @Override
+                public void onChanged(Double aDouble) {
+                    currentScore = aDouble;
+                }
+            });
+            foodModel.getNumOfRate().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+                @Override
+                public void onChanged(Integer integer) {
+                    currentNumOfRate = integer;
+                }
+            });
     }
 
     @Override
@@ -165,7 +187,7 @@ public class FoodReviewFragment extends Fragment {
             reviewRef.addChildEventListener(reviewListener);
         }
         else
-            Log.d(TAG, "foodId is null");
+            Log.d(TAG, "FoodReviewFragment: food id is null");
     }
 
     private void initScrollReviewListener() {
@@ -222,10 +244,8 @@ public class FoodReviewFragment extends Fragment {
 
     private void updateTotalFoodScore(double rating){
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("foods").child(foodId);
-        double currentScore = foodModel.getTotalScore();
-        int currentNumOfRate = foodModel.getNumOfRate();
         if(currentScore == -1 || currentNumOfRate == -1){
-            Log.d(TAG, "foodLiveData.getValue() == null");
+            Log.d(TAG, "FoodReviewFragment: foodLiveData.getValue() == null");
         }
         else{
             currentScore = currentScore*currentNumOfRate + rating;

@@ -1,9 +1,7 @@
 package com.camm.foodizz.models;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-// TODO: change this class, remove builder
 public class Food {
 
     private String foodId;

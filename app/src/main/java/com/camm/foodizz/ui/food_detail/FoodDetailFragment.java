@@ -1,6 +1,7 @@
 package com.camm.foodizz.ui.food_detail;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +78,13 @@ public class FoodDetailFragment extends Fragment {
             foodModel.getFood().observe(getViewLifecycleOwner(), new Observer<Food>() {
                 @Override
                 public void onChanged(Food food) {
-                    updateUI(food);
+                    txtDetailOfFood.setText(food.getFoodDetail());
+                }
+            });
+            foodModel.getTotalScore().observe(getViewLifecycleOwner(), new Observer<Double>() {
+                @Override
+                public void onChanged(Double aDouble) {
+                    rbFoodDetail.setRating(aDouble.floatValue());
                 }
             });
         }
@@ -90,11 +97,6 @@ public class FoodDetailFragment extends Fragment {
         btnIncreaseFood = view.findViewById(R.id.btnIncreaseFood);
         btnDecreaseFood = view.findViewById(R.id.btnDecreaseFood);
         rbFoodDetail = view.findViewById(R.id.rbFoodDetail);
-    }
-
-    private void updateUI(Food food){
-        txtDetailOfFood.setText(food.getFoodDetail());
-        rbFoodDetail.setRating((float) food.getTotalScore());
     }
 
 }

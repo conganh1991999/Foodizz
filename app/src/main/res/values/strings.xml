@@ -51,5 +51,18 @@
     <string name="mock_review_time">April 4, 2019</string>
     <string name="mock_review">The food is amazing, everyone else already said everything about the food.</string>
     <string name="review">Review</string>
+    <string name="foods">Foods</string>
+    <string name="mock_my_location">Ho Chi Minh</string>
+    <string name="mock_num_of_friends">250</string>
+    <string name="mock_experiences">540</string>
+    <string name="friends">Friends</string>
+    <string name="experience">Experience</string>
+    <string name="loves">Loves</string>
+    <string name="yours">Yours</string>
+    <string name="location_tracking">Location tracking</string>
+    <string name="location">Location</string>
+    <string name="shipping">Shipping</string>
+    <string name="payment">Payment</string>
+    <string name="log_out">Log out</string>
 
 </resources>

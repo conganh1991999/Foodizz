@@ -1,7 +1,5 @@
 package com.camm.foodizz.data.listener;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -15,8 +13,6 @@ import com.google.firebase.database.DatabaseError;
 import java.util.ArrayList;
 
 public class ListReviewListener implements ChildEventListener {
-
-    private static final String TAG = "ListReviewListener";
 
     private ArrayList<Review> listReview;
     private FoodReviewAdapter foodReviewAdapter;

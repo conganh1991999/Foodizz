@@ -35,6 +35,7 @@ public class ListRestaurantListener implements ChildEventListener {
                 dataSnapshot.child("name").getValue(String.class),
                 dataSnapshot.child("logo").getValue(String.class),
                 dataSnapshot.child("image").getValue(String.class),
+                dataSnapshot.child("address").getValue(String.class),
                 categoryName,
                 dataSnapshot.child("totalScore").getValue(Double.class),
                 dataSnapshot.child("numOfRate").getValue(Integer.class));

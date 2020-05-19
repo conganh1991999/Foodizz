@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardRestaurantMenuItem"
+    style="@style/App.CardView.CardFood">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgRestaurantMenuItem"
+            style="@style/FoodImage" />
+
+        <TextView
+            android:id="@+id/txtRestaurantItemName"
+            style="@style/App.TextView.FoodName"
+            android:layout_below="@id/imgRestaurantMenuItem" />
+
+        <TextView
+            android:id="@+id/txtRestaurantItemRate"
+            style="@style/App.TextView.FoodRate"
+            android:layout_below="@id/imgRestaurantMenuItem" />
+
+        <RatingBar
+            style="@style/App.RatingBar.FoodRatingBar"
+            android:layout_below="@id/imgRestaurantMenuItem" />
+
+        <CheckBox
+            android:id="@+id/cbRestaurantMenuItem"
+            style="@style/App.LikeCheckBox.FoodLikeCheckBox"
+            android:layout_below="@id/imgRestaurantMenuItem" />
+
+        <TextView
+            android:id="@+id/txtRestaurantItemPrice"
+            style="@style/App.TextView.FoodPrice"
+            android:layout_below="@id/cbRestaurantMenuItem" />
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

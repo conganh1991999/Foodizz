@@ -18,43 +18,57 @@ import java.util.ArrayList;
 public class FoodDetailViewModel extends AndroidViewModel {
 
     private MutableLiveData<Food> foodLiveData;
+    private MutableLiveData<Double> foodTotalScore;
+    private MutableLiveData<Integer> foodNumOfRate;
+
+    private DatabaseReference foodRef;
+    private ValueEventListener foodListener;
     private String foodId;
 
     public FoodDetailViewModel(@NonNull Application application) {
         super(application);
         foodLiveData = new MutableLiveData<>();
+        foodTotalScore = new MutableLiveData<>();
+        foodNumOfRate = new MutableLiveData<>();
     }
 
     void setFood(String foodId){
         this.foodId = foodId;
-        DatabaseReference foodRef = FirebaseDatabase.getInstance()
+        foodRef = FirebaseDatabase.getInstance()
                 .getReference("foods")
                 .child(foodId);
-        foodRef.addValueEventListener(new FoodItemListener());
+        foodListener = new FoodItemListener();
+        foodRef.addListenerForSingleValueEvent(foodListener);
+    }
+
+    void listenForRatingPoint(){
+        removeListener();
+        foodListener = new FoodRatingPointListener();
+        foodRef.addValueEventListener(foodListener);
+    }
+
+    void removeListener(){
+        foodRef.removeEventListener(foodListener);
     }
 
     String getFoodId(){
         return foodId;
     }
+
     MutableLiveData<Food> getFood(){
-        return this.foodLiveData;
+        return foodLiveData;
     }
-    double getTotalScore(){
-        if (foodLiveData.getValue() != null)
-            return foodLiveData.getValue().getTotalScore();
-        else
-            return -1;
+
+    MutableLiveData<Double> getTotalScore(){
+        return foodTotalScore;
     }
-    int getNumOfRate(){
-        if (foodLiveData.getValue() != null)
-            return foodLiveData.getValue().getNumOfRate();
-        else
-            return -1;
+
+    MutableLiveData<Integer> getNumOfRate(){
+        return foodNumOfRate;
     }
 
 
     private class FoodItemListener implements ValueEventListener {
-        // TODO: listen effectively
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -76,6 +90,23 @@ public class FoodDetailViewModel extends AndroidViewModel {
             foodItem.setFoodLandscapeImageUri(foodLandscapeImageUri);
 
             foodLiveData.setValue(foodItem);
+            foodTotalScore.setValue(dataSnapshot.child("totalScore").getValue(Double.class));
+            foodNumOfRate.setValue(dataSnapshot.child("numOfRate").getValue(Integer.class));
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+
+    }
+
+    private class FoodRatingPointListener implements ValueEventListener{
+
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            foodTotalScore.setValue(dataSnapshot.child("totalScore").getValue(Double.class));
+            foodNumOfRate.setValue(dataSnapshot.child("numOfRate").getValue(Integer.class));
         }
 
         @Override

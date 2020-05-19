@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
@@ -49,6 +48,7 @@ public class FoodDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
+
         SLIDER_CREATED = false;
 
         mapping();
@@ -58,6 +58,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         foodModel.getFood().observe(this, new Observer<Food>() {
             @Override
             public void onChanged(Food food) {
+                foodModel.listenForRatingPoint();
                 updateUI(food);
             }
         });
@@ -66,8 +67,8 @@ public class FoodDetailActivity extends AppCompatActivity {
         fragmentList.add(new FoodDetailFragment());
         fragmentList.add(new FoodReviewFragment());
         List<String> titleList = new ArrayList<>();
-        titleList.add("Detail");
-        titleList.add("Review");
+        titleList.add("Details");
+        titleList.add("Reviews");
 
         PagerAdapter foodDetailPagerAdapter = new PagerAdapter(getSupportFragmentManager(), 1);
         foodDetailPagerAdapter.addFragment(fragmentList, titleList);
@@ -75,6 +76,14 @@ public class FoodDetailActivity extends AppCompatActivity {
         foodDetailFragmentPager.setAdapter(foodDetailPagerAdapter);
         foodDetailTabLayout.setupWithViewPager(foodDetailFragmentPager);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG, "FoodDetailActivity: onDestroy()");
+        super.onDestroy();
+        if(foodModel != null)
+            foodModel.removeListener();
     }
 
     private void mapping(){
@@ -95,7 +104,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                 foodModel.setFood(foodId);
             }
         } else {
-            Log.d(TAG, "food object is null");
+            Log.d(TAG, "FoodDetailActivity: food id is null");
         }
     }
 
