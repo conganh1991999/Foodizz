@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.camm.foodizz.models.Food;
 import com.camm.foodizz.models.adapter.MenuItemAdapter;
+import com.camm.foodizz.ui.home_menu.profile.FavouriteFragment;
 import com.camm.foodizz.ui.restaurant.RestaurantMenuFragment;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -19,11 +20,13 @@ public class MenuItemListener implements ChildEventListener {
 
     private ArrayList<Food> listFoodOnMenu;
     private MenuItemAdapter menuAdapter;
+    private String menu;
     private int counter = 5;
 
-    public MenuItemListener(ArrayList<Food> listFoodOnMenu, MenuItemAdapter menuAdapter) {
+    public MenuItemListener(ArrayList<Food> listFoodOnMenu, MenuItemAdapter menuAdapter, String menu) {
         this.listFoodOnMenu = listFoodOnMenu;
         this.menuAdapter = menuAdapter;
+        this.menu = menu;
     }
 
     @Override
@@ -56,8 +59,15 @@ public class MenuItemListener implements ChildEventListener {
             counter -= 1;
         }
         else {
-            RestaurantMenuFragment.nextMenuFoodItemKey = dataSnapshot.getKey();
-            RestaurantMenuFragment.isScrollingMenu = true;
+            if(menu.equals("RestaurantMenu"))
+            {
+                RestaurantMenuFragment.nextMenuFoodItemKey = dataSnapshot.getKey();
+                RestaurantMenuFragment.isScrollingMenu = true;
+            }
+            else if(menu.equals("FavouriteMenu")){
+                FavouriteFragment.nextMenuFoodItemKey = dataSnapshot.getKey();
+                FavouriteFragment.isScrollingMenu = true;
+            }
         }
     }
 

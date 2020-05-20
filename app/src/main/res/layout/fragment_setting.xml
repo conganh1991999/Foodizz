@@ -34,7 +34,7 @@
             android:layout_gravity="end|center"
             android:checked="true"
             app:thumbTint="@color/colorAccent"
-            app:trackTint="@color/rippleColorSecondary"/>
+            app:trackTint="@color/grayBackground"/>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -43,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="@dimen/setting_card_corner_radius"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
             app:cardCornerRadius="0dp"
             android:clickable="true"
             android:focusable="true"
-            app:rippleColor="@color/rippleColorSecondary">
+            app:rippleColor="@color/rippleColorPrimary">
 
             <ImageView
                 android:layout_width="32dp"
@@ -86,7 +86,7 @@
             android:layout_marginTop="57dp"
             android:clickable="true"
             android:focusable="true"
-            app:rippleColor="@color/rippleColorSecondary">
+            app:rippleColor="@color/rippleColorPrimary">
 
             <ImageView
                 android:layout_width="32dp"
@@ -116,7 +116,7 @@
             android:layout_marginTop="114dp"
             android:clickable="true"
             android:focusable="true"
-            app:rippleColor="@color/rippleColorSecondary">
+            app:rippleColor="@color/rippleColorPrimary">
 
             <ImageView
                 android:layout_width="32dp"
@@ -150,7 +150,7 @@
         app:cardCornerRadius="@dimen/setting_card_corner_radius"
         android:clickable="true"
         android:focusable="true"
-        app:rippleColor="@color/rippleColorSecondary"
+        app:rippleColor="@color/rippleColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardLocationTracking">

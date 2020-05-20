@@ -9,32 +9,32 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imgRestaurantMenuItem"
+            android:id="@+id/imgMenuItem"
             style="@style/FoodImage" />
 
         <TextView
-            android:id="@+id/txtRestaurantItemName"
+            android:id="@+id/txtItemName"
             style="@style/App.TextView.FoodName"
-            android:layout_below="@id/imgRestaurantMenuItem" />
+            android:layout_below="@id/imgMenuItem" />
 
         <TextView
-            android:id="@+id/txtRestaurantItemRate"
+            android:id="@+id/txtItemRate"
             style="@style/App.TextView.FoodRate"
-            android:layout_below="@id/imgRestaurantMenuItem" />
+            android:layout_below="@id/imgMenuItem" />
 
         <RatingBar
             style="@style/App.RatingBar.FoodRatingBar"
-            android:layout_below="@id/imgRestaurantMenuItem" />
+            android:layout_below="@id/imgMenuItem" />
 
         <CheckBox
-            android:id="@+id/cbRestaurantMenuItem"
+            android:id="@+id/cbMenuItem"
             style="@style/App.LikeCheckBox.FoodLikeCheckBox"
-            android:layout_below="@id/imgRestaurantMenuItem" />
+            android:layout_below="@id/imgMenuItem" />
 
         <TextView
-            android:id="@+id/txtRestaurantItemPrice"
+            android:id="@+id/txtItemPrice"
             style="@style/App.TextView.FoodPrice"
-            android:layout_below="@id/cbRestaurantMenuItem" />
+            android:layout_below="@id/cbMenuItem" />
 
     </RelativeLayout>
 

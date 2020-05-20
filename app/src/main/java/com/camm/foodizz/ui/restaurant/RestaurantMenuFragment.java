@@ -1,11 +1,9 @@
 package com.camm.foodizz.ui.restaurant;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.contentcapture.DataRemovalRequest;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,21 +17,13 @@ import com.camm.foodizz.data.listener.MenuItemListener;
 import com.camm.foodizz.models.Food;
 import com.camm.foodizz.models.adapter.MenuItemAdapter;
 import com.camm.foodizz.models.decorator.FoodListDivider;
-import com.camm.foodizz.ui.food_detail.FoodDetailViewModel;
 import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RestaurantMenuFragment extends Fragment {
-
-    private static final String TAG = "RestaurantMenuFragment";
 
     private View view;
 
@@ -94,7 +84,7 @@ public class RestaurantMenuFragment extends Fragment {
                     .child(restaurantId).child("foods")
                     .orderByKey()
                     .limitToFirst(5);
-            restaurantMenuListener = new MenuItemListener(listFoodsOnMenu, menuAdapter);
+            restaurantMenuListener = new MenuItemListener(listFoodsOnMenu, menuAdapter, "RestaurantMenu");
             restaurantMenuRef.addChildEventListener(restaurantMenuListener);
         }
     }
@@ -127,7 +117,7 @@ public class RestaurantMenuFragment extends Fragment {
                 .orderByKey()
                 .startAt(nextMenuFoodItemKey)
                 .limitToFirst(5);
-        restaurantMenuListener = new MenuItemListener(listFoodsOnMenu, menuAdapter);
+        restaurantMenuListener = new MenuItemListener(listFoodsOnMenu, menuAdapter, "RestaurantMenu");
         restaurantMenuRef.addChildEventListener(restaurantMenuListener);
     }
 

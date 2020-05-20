@@ -29,34 +29,34 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.ItemVi
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgRestaurantMenuItem;
-        TextView txtRestaurantItemName, txtRestaurantItemRate, txtRestaurantItemPrice;
-        CheckBox cbRestaurantMenuItem;
+        ImageView imgMenuItem;
+        TextView txtItemName, txtItemRate, txtItemPrice;
+        CheckBox cbMenuItem;
         ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgRestaurantMenuItem = itemView.findViewById(R.id.imgRestaurantMenuItem);
-            txtRestaurantItemName = itemView.findViewById(R.id.txtRestaurantItemName);
-            txtRestaurantItemRate = itemView.findViewById(R.id.txtRestaurantItemRate);
-            txtRestaurantItemPrice = itemView.findViewById(R.id.txtRestaurantItemPrice);
-            cbRestaurantMenuItem = itemView.findViewById(R.id.cbRestaurantMenuItem);
+            imgMenuItem = itemView.findViewById(R.id.imgMenuItem);
+            txtItemName = itemView.findViewById(R.id.txtItemName);
+            txtItemRate = itemView.findViewById(R.id.txtItemRate);
+            txtItemPrice = itemView.findViewById(R.id.txtItemPrice);
+            cbMenuItem = itemView.findViewById(R.id.cbMenuItem);
         }
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.restaurant_menu_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.menu_item, parent, false);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        holder.txtRestaurantItemName.setText(listFoodsOnMenu.get(position).getFoodName());
-        holder.txtRestaurantItemPrice.setText(String.format("$%s",
+        holder.txtItemName.setText(listFoodsOnMenu.get(position).getFoodName());
+        holder.txtItemPrice.setText(String.format("$%s",
                 new DecimalFormat("######.00").format(listFoodsOnMenu.get(position).getFoodPrice())));
-        Picasso.get().load(listFoodsOnMenu.get(position).getFoodSquareImageUri()).into(holder.imgRestaurantMenuItem);
-        holder.txtRestaurantItemRate.setText(new DecimalFormat("0.0").format(listFoodsOnMenu.get(position).getTotalScore()));
-        holder.cbRestaurantMenuItem.setChecked(false);
+        Picasso.get().load(listFoodsOnMenu.get(position).getFoodSquareImageUri()).into(holder.imgMenuItem);
+        holder.txtItemRate.setText(new DecimalFormat("0.0").format(listFoodsOnMenu.get(position).getTotalScore()));
+        holder.cbMenuItem.setChecked(false);
     }
 
     @Override
