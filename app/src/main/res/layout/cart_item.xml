@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView android:id="@+id/cartItem"
+    style="@style/App.CardView.CardFood"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgCartFood"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp" />
+
+        <TextView
+            style="@style/App.TextView.FoodName.CartFoodName"
+            android:id="@+id/txtCartFoodName"
+            android:layout_toEndOf="@id/imgCartFood"/>
+
+        <TextView
+            style="@style/App.TextView.FoodPrice.CartFoodPrice"
+            android:id="@+id/txtCartFoodPrice"
+            android:layout_below="@id/txtCartFoodName"
+            android:layout_toEndOf="@id/imgCartFood"/>
+
+        <RatingBar
+            style="@style/App.RatingBar.ReviewRatingBar.CartRatingBar"
+            android:id="@+id/rbCartFood"
+            android:layout_below="@id/txtCartFoodName"
+            android:layout_alignParentStart="true" />
+
+
+        <com.nex3z.notificationbadge.NotificationBadge
+            android:id="@+id/cartFoodBadge"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:textColor="@color/white"
+            app:nbBackground="@drawable/badge_number"
+            app:nbMaxTextLength="2"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="24dp"
+            android:layout_below="@id/txtCartFoodPrice"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

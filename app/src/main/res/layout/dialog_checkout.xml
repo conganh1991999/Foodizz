@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/txtSubtotal1"
+        style="@style/App.TextView.CheckoutTextView"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="160dp"
+        android:text="@string/subtotal"
+        app:layout_constraintEnd_toStartOf="@+id/txtSubtotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtShippingFee1"
+        style="@style/App.TextView.CheckoutTextView"
+        android:text="@string/shipping"
+        app:layout_constraintStart_toStartOf="@+id/txtSubtotal1"
+        app:layout_constraintTop_toBottomOf="@+id/txtSubtotal1" />
+
+    <TextView
+        android:id="@+id/txtTotal1"
+        style="@style/App.TextView.CheckoutTextView"
+        android:text="@string/total"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtShippingFee1"
+        app:layout_constraintTop_toBottomOf="@+id/slash" />
+
+    <TextView
+        android:id="@+id/txtSubtotal"
+        style="@style/App.TextView.CheckoutTextView"
+        android:layout_marginEnd="16dp"
+        android:text="@string/mock_subtotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtSubtotal1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtShippingFee"
+        style="@style/App.TextView.CheckoutTextView"
+        android:text="@string/mock_shipping_fee"
+        app:layout_constraintStart_toStartOf="@+id/txtSubtotal"
+        app:layout_constraintTop_toBottomOf="@+id/txtSubtotal" />
+
+    <View
+        android:id="@+id/slash"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/notFocusColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtShippingFee1"
+        app:layout_constraintTop_toBottomOf="@+id/txtShippingFee1" />
+
+    <TextView
+        android:id="@+id/txtTotal"
+        style="@style/App.TextView.CheckoutTextView"
+        android:text="@string/mock_total"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtShippingFee"
+        app:layout_constraintTop_toBottomOf="@+id/slash" />
+
+    <Button
+        android:id="@+id/btnPayCheckout"
+        style="@style/App.ContainedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/pay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTotal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

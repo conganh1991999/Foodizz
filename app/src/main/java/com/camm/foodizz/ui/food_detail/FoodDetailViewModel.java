@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.camm.foodizz.data.repository.CartRepository;
+import com.camm.foodizz.data.room.entity.CartFood;
 import com.camm.foodizz.models.Food;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,11 +27,14 @@ public class FoodDetailViewModel extends AndroidViewModel {
     private ValueEventListener foodListener;
     private String foodId;
 
+    private CartRepository repository;
+
     public FoodDetailViewModel(@NonNull Application application) {
         super(application);
         foodLiveData = new MutableLiveData<>();
         foodTotalScore = new MutableLiveData<>();
         foodNumOfRate = new MutableLiveData<>();
+        repository = new CartRepository(application);
     }
 
     void setFood(String foodId){
@@ -68,6 +73,25 @@ public class FoodDetailViewModel extends AndroidViewModel {
         return foodNumOfRate;
     }
 
+    void saveFoodToCart(int quantity){
+        Food food = foodLiveData.getValue();
+        if(food != null){
+            CartFood data = new CartFood(
+                    food.getFoodId(),
+                    food.getFoodName(),
+                    food.getFoodSquareImageUri(),
+                    food.getFoodPrice(),
+                    food.getTotalScore(),
+                    quantity
+            );
+            repository.insert(data);
+        }
+    }
+
+    void updateQuantity(String foodId, int newQuantity){
+        repository.updateQuantity(foodId, newQuantity);
+    }
+
     private class FoodItemListener implements ValueEventListener {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -78,7 +102,7 @@ public class FoodDetailViewModel extends AndroidViewModel {
                     dataSnapshot.child("name").getValue(String.class),
                     dataSnapshot.child("price").getValue(Double.class),
                     totalScore, numOfRate);
-
+            foodItem.setFoodSquareImageUri(dataSnapshot.child("squareImage").getValue(String.class));
             foodItem.setFoodDetail(dataSnapshot.child("detail").getValue(String.class));
             foodItem.setRestaurantName(dataSnapshot.child("restaurantName").getValue(String.class));
             foodItem.setRestaurantId(dataSnapshot.child("restaurantId").getValue(String.class));

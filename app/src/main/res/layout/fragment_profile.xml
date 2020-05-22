@@ -10,7 +10,6 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/mock_profile_crush"
         app:civ_border_color="@color/colorAccent"
         app:civ_border_width="1dp"
         app:layout_constraintEnd_toEndOf="parent"

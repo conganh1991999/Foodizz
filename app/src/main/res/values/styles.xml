@@ -325,4 +325,31 @@
     </style>
     <!-- Restaurant Item -->
 
+
+    <!-- Cart Item -->
+
+    <style name="App.TextView.FoodName.CartFoodName">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="App.TextView.FoodPrice.CartFoodPrice">
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_alignParentRight">false</item>
+    </style>
+
+    <style name="App.RatingBar.ReviewRatingBar.CartRatingBar">
+        <item name="android:isIndicator">true</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <!-- Cart Item -->
+    
+    <style name="App.TextView.CheckoutTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
 </resources>

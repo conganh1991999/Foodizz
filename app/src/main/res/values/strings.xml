@@ -64,5 +64,16 @@
     <string name="shipping">Shipping</string>
     <string name="payment">Payment</string>
     <string name="log_out">Log out</string>
+    <string name="foods_cart">Foods Cart</string>
+    <string name="paid_orders">Paid Orders</string>
+    <string name="done_orders">Done Orders</string>
+    <string name="checkout">Checkout</string>
+    <string name="delete_all_foods">Delete all foods</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="total">Total</string>
+    <string name="mock_subtotal">$0.00</string>
+    <string name="mock_shipping_fee">$20.00</string>
+    <string name="mock_total">$700.00</string>
+    <string name="pay">Pay</string>
 
 </resources>
